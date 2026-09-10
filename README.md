@@ -45,27 +45,6 @@ suite. Please keep them coming.
 Broader contributions will be accepted once the refactoring settles. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for what is being accepted in the meantime.
 
-## Getting started
-
-```bash
-pip install marlim3
-```
-
-```python
-import marlim3
-
-branch = marlim3.Branch()
-branch.from_json("demos/pt-br/producaoSimplificado.mr3")
-branch.simulate()
-branch.plot_profiles()
-```
-
-Standalone desktop applications and command-line executables are published with
-every release, for users who prefer not to install Python.
-
-**→ [Getting Started](docs/getting-started.md)** — installation, usage, and
-building from source.
-
 ## Documentation
 
 | | |
