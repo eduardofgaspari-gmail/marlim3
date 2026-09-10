@@ -79,7 +79,3 @@ Portuguese. We plan to gradually translate all content into English.
 
 The Python API is fully bilingual (EN/PT) — see
 [Bilingual Support](docs/dev-guide/translations.md).
-
-## License
-
-[Apache 2.0](LICENSE.md)
