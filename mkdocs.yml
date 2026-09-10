@@ -38,6 +38,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Getting Started: getting-started.md
   - Tutorials:
     - Overview: tutorials/index.md
     - Horizontal vs Vertical: tutorials/1-horizontal_vertical_comparison.ipynb
