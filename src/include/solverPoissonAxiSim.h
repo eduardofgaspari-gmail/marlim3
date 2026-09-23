@@ -5,16 +5,16 @@
  *      Author: Eduardo
  */
 
-#ifndef SOLVERPOISSON_H_
-#define SOLVERPOISSON_H_
+#ifndef SOLVERAxiSim_H_
+#define SOLVERAxiSim_H_
 #define _USE_MATH_DEFINES
 
-#include "Elem2DPoisson.h"
+//#include "dados1PoissonAxiSim.h"
+#include "Elem2DPoissonAxiSim.h"
 #include "Log.h"
-#include "Malha2DPoisson.h"
+#include "Malha2DPoissonAxiSim.h"
 #include "Matriz.h"
 #include "Vetor.h"
-#include "dados1Poisson.h"
 #include "estruturasPoisson.h"
 #include "variaveisGlobais1D.h"
 #include <ctime>
@@ -33,25 +33,31 @@
 
 using namespace std;
 
-class solverP {
+class dadosPAxiSim;
+
+class solverPAxiSim {
   public:
+	dadosPAxiSim* dados;
     Vcr<double> termolivre;
     SparseMtx<double> matglob;
-    dadosP dados;
-    malha2d malha;
+    malha2dAxiSim malha;
     int kontaTempo;
-    int indCel;
+    double tempProd;
     varGlob1D *vg1dSP;
     int precn;
-    solverP(varGlob1D *Vvg1dSP, string nomeArquivoEntrada, double vCondGlob = 0., double vCondLoc = 0., double vhE = 0., double vhInt = 0.,
-            double vTint = 0., double vTamb = 0., double vdiamI = 0., double vdiamE = 0., int indcel = 0);
-    solverP();
-    solverP(const solverP &);
-    solverP &operator=(const solverP &);
+    solverPAxiSim(varGlob1D *Vvg1dSP, string nomeArquivoEntrada, double* vresGlob = 0,
+            double* vTint = 0, double* vdiamI = 0
+			, double* dxCel=0, int vncel=0, double* vgeoterm=0, double vtempProd=0.);
+    solverPAxiSim();
+    solverPAxiSim(const solverPAxiSim &);
+    solverPAxiSim &operator=(const solverPAxiSim &);
+    ~solverPAxiSim();
+
+    double ResForm(double tempprod, double diaExt,double condform, double rhoform, double cpform);
     void indrazT(int &ind, double &raz);
     void permanentePoisson();
     void inicializaPermanentePoisson();
-    void inicializaTransientePoisson();
+    void inicializaTransientePoisson(std::vector<double>& tInicial);
     double defineDeltPoisson();
     void transientePoissonDummy(double delt);
     void transientePoisson(double delt);

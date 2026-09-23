@@ -4,11 +4,13 @@
  *  Created on: 22 de jun. de 2022
  *      Author: Eduardo
  */
-#include "Elem2DPoisson.h"
+#include "Elem2DPoissonAxiSim.h"
 
 
-elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int* tipo,double* atributo,int nVert, int nele, int nno, int vperm,
-		int vtrans,int i,double vtemp,double vfluxCal,double vcond,double vcp,double vrho,double vdt) :
+elem2dPoissonAxiSim::elem2dPoissonAxiSim(varGlob1D* Vvg1dSP,double** xcoor,
+		int** noEle,int* tipo,double* atributo,int nVert, int nele, int nno, int vperm,
+		int vtrans,int i,int vacopD,double vtemp,double vfluxCal,double vcond,double vcp,
+		double vrho,double vdt) :
 				TL(1), local(1,nVert+1) {
 	vg1dSP=Vvg1dSP;
 	vizinho=0;
@@ -30,20 +32,24 @@ elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int*
 	ccTVN=0;
 	ccHR=0;
 	ccTambR=0;
+	acopD=vacopD;
 	CC=detCCPoisson();
 	if(nele>0){
 		cel2D.noFace=0;
     	cel2D.dim=2;
-    	cel2D.nvert=3;
+    	cel2D.nvert=4;
     	cel2D.indEle=i;
     	cel2D.nele=nele;
     	tempF=new double [cel2D.nvert];
-    	gradTface=new double* [cel2D.nvert];
+    	fluxTface=new double* [cel2D.nvert];
     	ccTD=new double [cel2D.nvert];
     	ccTVN=new double [cel2D.nvert];
     	ccHR=new double [cel2D.nvert];
     	ccTambR=new double [cel2D.nvert];
-    	for(int j=0; j<cel2D.nvert;j++) gradTface[j]=new double [cel2D.dim];
+    	for(int i=0; i<cel2D.nvert;i++){
+    		fluxTface[i]=new double [cel2D.dim];
+    		for(int j=0;j<cel2D.dim;j++) fluxTface[i][j]=0.;
+    	}
     	cel2D.gradGreenT=new double [cel2D.dim];
     	for(int j=0; j<cel2D.dim;j++)cel2D.gradGreenT[j]=0.;
     	cel2D.gradGreenTI=new double [cel2D.dim];
@@ -68,6 +74,7 @@ elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int*
     	cel2D.sFace=new double* [cel2D.nvert];
     	for(int j=0; j<cel2D.nvert;j++) cel2D.sFace[j]=new double [cel2D.dim];
     	cel2D.sFaceMod=new double [cel2D.nvert];
+    	cel2D.subVol=new double [cel2D.nvert];
         cel2D.vecE=new double* [cel2D.nvert];
         for(int j=0; j<cel2D.nvert;j++) cel2D.vecE[j]=new double [cel2D.dim];
         cel2D.modE=new double [cel2D.nvert];
@@ -81,7 +88,7 @@ elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int*
         cel2D.fIfC=new double* [cel2D.nvert];
         for(int j=0; j<cel2D.nvert;j++) cel2D.fIfC[j]=new double [cel2D.dim];
 
-    	vizinho=new elementoPoisson* [cel2D.nvert];
+    	vizinho=new elementoPoissonAxiSim* [cel2D.nvert];
     	kvizinho=new int [cel2D.nvert];
 		for(int k=0; k<cel2D.nvert;k++){
 			kvizinho[k]=-1;
@@ -122,6 +129,7 @@ elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int*
     			cel2D.coordVert[j][k]=xcoor[iNo][k];
     		}
     	}
+
     	for(int j=0; j<cel2D.dim;j++){
     		cel2D.centroElem[j]=0.;
     		for(int k=0; k<cel2D.nvert; k++){
@@ -134,6 +142,18 @@ elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int*
     		cel2D.vElem=0.5*fabs((cel2D.coordVert[1][0]-cel2D.coordVert[0][0])*
 					(cel2D.coordVert[2][1]-cel2D.coordVert[0][1])-(cel2D.coordVert[2][0]-cel2D.coordVert[0][0])*
 					(cel2D.coordVert[1][1]-cel2D.coordVert[0][1]));
+    		for(int k=0; k<cel2D.nvert; k++){
+    			if(k<cel2D.nvert-1){
+    				cel2D.subVol[k]=0.5*fabs((cel2D.coordVert[k][0]-cel2D.centroElem[0])*
+    					(cel2D.coordVert[k+1][1]-cel2D.centroElem[1])-(cel2D.coordVert[k+1][0]-cel2D.centroElem[0])*
+    					(cel2D.coordVert[k][1]-cel2D.centroElem[1]));
+    			}
+    			else{
+    				cel2D.subVol[k]=0.5*fabs((cel2D.coordVert[k][0]-cel2D.centroElem[0])*
+    					(cel2D.coordVert[0][1]-cel2D.centroElem[1])-(cel2D.coordVert[0][0]-cel2D.centroElem[0])*
+    					(cel2D.coordVert[k][1]-cel2D.centroElem[1]));
+    			}
+    		}
     	}
     	else{
     		double sT[cel2D.nvert];
@@ -141,14 +161,14 @@ elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int*
     		cel2D.vElem=0.;
     		for(int k=0; k<cel2D.nvert; k++){
     			if(k<cel2D.nvert-1){
-    				sT[k]=0.5*fabs((cel2D.coordVert[k][0]-cel2D.centroElem[0])*
+    				cel2D.subVol[k]=sT[k]=0.5*fabs((cel2D.coordVert[k][0]-cel2D.centroElem[0])*
     					(cel2D.coordVert[k+1][1]-cel2D.centroElem[1])-(cel2D.coordVert[k+1][0]-cel2D.centroElem[0])*
     					(cel2D.coordVert[k][1]-cel2D.centroElem[1]));
     				centroT[k][0]=(cel2D.coordVert[k][0]+cel2D.coordVert[k+1][0]+cel2D.centroElem[0])/3.;
     				centroT[k][1]=(cel2D.coordVert[k][1]+cel2D.coordVert[k+1][1]+cel2D.centroElem[1])/3.;
     			}
     			else{
-    				sT[k]=0.5*fabs((cel2D.coordVert[k][0]-cel2D.centroElem[0])*
+    				cel2D.subVol[k]=sT[k]=0.5*fabs((cel2D.coordVert[k][0]-cel2D.centroElem[0])*
     					(cel2D.coordVert[0][1]-cel2D.centroElem[1])-(cel2D.coordVert[0][0]-cel2D.centroElem[0])*
     					(cel2D.coordVert[k][1]-cel2D.centroElem[1]));
     				centroT[k][0]=(cel2D.coordVert[k][0]+cel2D.coordVert[0][0]+cel2D.centroElem[0])/3.;
@@ -164,6 +184,9 @@ elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int*
         		cel2D.centroideElem[j]/=cel2D.vElem;
         	}
     	}
+    	//// Aqui, exclusivamente para caso Axissimétrico:
+    	cel2D.vElem=M_PI*(cel2D.coordVert[1][0]*cel2D.coordVert[1][0]-cel2D.coordVert[0][0]*cel2D.coordVert[0][0])*
+    			(cel2D.coordVert[1][1]-cel2D.coordVert[2][1]);
     	for(int k=0; k<cel2D.nvert; k++){
     		double val;
     		if(k<cel2D.nvert-1){
@@ -224,17 +247,18 @@ elem2dPoisson::elem2dPoisson(varGlob1D* Vvg1dSP,double** xcoor, int** noEle,int*
 		cel2D.noFace=0;
 		cel2D.sFace=0;
 		cel2D.sFaceMod=0;
+		cel2D.subVol=0;
 		cel2D.ownFace=0;
 		cel2D.gradGreenT=0;
 		cel2D.gradGreenTI=0;
 		tempF=0;
-		gradTface=0;
+		fluxTface=0;
     	coefTHRC=0;
     	coefTHRV=0;
     	fonteTHR=0;
 	}
 }
-elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
+elem2dPoissonAxiSim::elem2dPoissonAxiSim(const elem2dPoissonAxiSim& velem) :
 						TL(1), local(1,velem.cel2D.nvert+1) {
 	vg1dSP=velem.vg1dSP;
 	cel2D.nvert=velem.cel2D.nvert;
@@ -255,8 +279,9 @@ elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
 	perm=velem.perm;
 	trans=velem.trans;
 	CC=velem.CC;
+	acopD=velem.acopD;
 	if(cel2D.nvert>0){
-    	vizinho=new elementoPoisson* [cel2D.nvert];
+    	vizinho=new elementoPoissonAxiSim* [cel2D.nvert];
     	kvizinho=new int [cel2D.nvert];
 		for(int k=0; k<cel2D.nvert;k++){
 			kvizinho[k]=velem.kvizinho[k];
@@ -272,7 +297,7 @@ elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
 		local=velem.local;
 		cel2D.noFace=0;
     	tempF=new double [cel2D.nvert];
-    	gradTface=new double* [cel2D.nvert];
+    	fluxTface=new double* [cel2D.nvert];
     	ccTD=new double [cel2D.nvert];
     	ccTVN=new double [cel2D.nvert];
     	ccHR=new double [cel2D.nvert];
@@ -283,7 +308,7 @@ elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
         	ccHR[j]=-1;
         	ccTambR[j]=-1;
     	}
-    	for(int j=0; j<cel2D.nvert;j++) gradTface[j]=new double [cel2D.dim];
+    	for(int j=0; j<cel2D.nvert;j++) fluxTface[j]=new double [cel2D.dim];
     	cel2D.gradGreenT=new double [cel2D.dim];
     	for(int j=0;j<cel2D.dim;j++) cel2D.gradGreenT[j]=velem.cel2D.gradGreenT[j];
     	cel2D.gradGreenTI=new double [cel2D.dim];
@@ -294,7 +319,7 @@ elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
         	ccTVN[i]=velem.ccTVN[i];
         	ccHR[i]=velem.ccHR[i];
         	ccTambR[i]=velem.ccTambR[i];
-        	for(int j=0;j<cel2D.dim;j++) gradTface[i][j]=velem.gradTface[i][j];
+        	for(int j=0;j<cel2D.dim;j++) fluxTface[i][j]=velem.fluxTface[i][j];
     	}
     	coefTHRC=new double [cel2D.nvert];
     	coefTHRV=new double [cel2D.nvert];
@@ -340,6 +365,8 @@ elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
         	for(int j=0; j<cel2D.dim;j++)cel2D.sFace[i][j]=velem.cel2D.sFace[i][j];
     	cel2D.sFaceMod=new double [cel2D.nvert];
     	for(int i=0; i<cel2D.nvert;i++)cel2D.sFaceMod[i]=velem.cel2D.sFaceMod[i];
+    	cel2D.subVol=new double [cel2D.nvert];
+    	for(int i=0; i<cel2D.nvert;i++)cel2D.subVol[i]=velem.cel2D.subVol[i];
         cel2D.vecE=new double* [cel2D.nvert];
         for(int j=0; j<cel2D.nvert;j++) cel2D.vecE[j]=new double [cel2D.dim];
     	for(int i=0; i<cel2D.nvert;i++)
@@ -381,6 +408,7 @@ elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
 		cel2D.noFace=0;
 		cel2D.sFace=0;
 		cel2D.sFaceMod=0;
+		cel2D.subVol=0;
 		cel2D.ownFace=0;
         cel2D.vecE=0;
         cel2D.modE=0;
@@ -393,7 +421,7 @@ elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
         cel2D.gradGreenT=0;
         cel2D.gradGreenTI=0;
         tempF=0;
-        gradTface=0;
+        fluxTface=0;
     	ccTD=0;
     	ccTVN=0;
     	ccHR=0;
@@ -405,7 +433,7 @@ elem2dPoisson::elem2dPoisson(const elem2dPoisson& velem) :
 	}
 }
 
-elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
+elem2dPoissonAxiSim& elem2dPoissonAxiSim::operator =(const elem2dPoissonAxiSim& velem) {
 	if (this != &velem) {
 		if(cel2D.nvert>0){
 			delete[] cel2D.noElem;
@@ -416,6 +444,7 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 			delete[] cel2D.centroideElem;
 			delete[] cel2D.dCFMod;
 			delete[] cel2D.sFaceMod;
+			delete[] cel2D.subVol;
 			delete[] cel2D.ownFace;
 			delete[] ccTD;
 			delete[] ccTVN;
@@ -430,7 +459,7 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 				delete[] cel2D.vecT[i];
 				delete[] cel2D.fInter[i];
 				delete[] cel2D.fIfC[i];
-				delete[] gradTface[i];
+				delete[] fluxTface[i];
 			}
 			delete[] cel2D.centroideFace;
 			delete[] cel2D.coordVert;
@@ -449,7 +478,7 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 			delete[] cel2D.gradGreenT;
 			delete[] cel2D.gradGreenTI;
 			delete[] tempF;
-			delete[] gradTface;
+			delete[] fluxTface;
 
 			delete[] coefTHRC;
 			delete[] coefTHRV;
@@ -480,8 +509,9 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 		ccHR=velem.ccHR;
 		ccTambR=velem.ccTambR;
 		CC=velem.CC;
+		acopD=velem.acopD;
 		if(cel2D.nvert>0){
-	    	vizinho=new elementoPoisson* [cel2D.nvert];
+	    	vizinho=new elementoPoissonAxiSim* [cel2D.nvert];
 	    	kvizinho=new int [cel2D.nvert];
 			for(int k=0; k<cel2D.nvert;k++){
 				kvizinho[k]=velem.kvizinho[k];
@@ -495,12 +525,12 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 		if(cel2D.nele>0){
 			cel2D.noFace=0;
 	    	tempF=new double [cel2D.nvert];
-	    	gradTface=new double* [cel2D.nvert];
+	    	fluxTface=new double* [cel2D.nvert];
 	    	ccTD=new double [cel2D.nvert];
 	    	ccTVN=new double [cel2D.nvert];
 	    	ccHR=new double [cel2D.nvert];
 	    	ccTambR=new double [cel2D.nvert];
-	    	for(int j=0; j<cel2D.nvert;j++) gradTface[j]=new double [cel2D.dim];
+	    	for(int j=0; j<cel2D.nvert;j++) fluxTface[j]=new double [cel2D.dim];
 	    	cel2D.gradGreenT=new double [cel2D.dim];
 	    	for(int j=0;j<cel2D.dim;j++) cel2D.gradGreenT[j]=velem.cel2D.gradGreenT[j];
 	    	cel2D.gradGreenTI=new double [cel2D.dim];
@@ -511,7 +541,7 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 	        	ccTVN[i]=velem.ccTVN[i];
 	        	ccHR[i]=velem.ccHR[i];
 	        	ccTambR[i]=velem.ccTambR[i];
-	        	for(int j=0;j<cel2D.dim;j++) gradTface[i][j]=velem.gradTface[i][j];
+	        	for(int j=0;j<cel2D.dim;j++) fluxTface[i][j]=velem.fluxTface[i][j];
 	    	}
 	    	coefTHRC=new double [cel2D.nvert];
 	    	coefTHRV=new double [cel2D.nvert];
@@ -558,6 +588,8 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 	        	for(int j=0; j<cel2D.dim;j++)cel2D.sFace[i][j]=velem.cel2D.sFace[i][j];
 	    	cel2D.sFaceMod=new double [cel2D.nvert];
 	    	for(int i=0; i<cel2D.nvert;i++)cel2D.sFaceMod[i]=velem.cel2D.sFaceMod[i];
+	    	cel2D.subVol=new double [cel2D.nvert];
+	    	for(int i=0; i<cel2D.nvert;i++)cel2D.subVol[i]=velem.cel2D.subVol[i];
 	        cel2D.vecE=new double* [cel2D.nvert];
 	        for(int j=0; j<cel2D.nvert;j++) cel2D.vecE[j]=new double [cel2D.dim];
 	    	for(int i=0; i<cel2D.nvert;i++)
@@ -599,6 +631,7 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 			cel2D.noFace=0;
 			cel2D.sFace=0;
 			cel2D.sFaceMod=0;
+			cel2D.subVol=0;
 			cel2D.ownFace=0;
 	        cel2D.vecE=0;
 	        cel2D.modE=0;
@@ -611,7 +644,7 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 	        cel2D.gradGreenT=0;
 	        cel2D.gradGreenTI=0;
 	        tempF=0;
-	        gradTface=0;
+	        fluxTface=0;
 	    	ccTD=0;
 	    	ccTVN=0;
 	    	ccHR=0;
@@ -625,7 +658,7 @@ elem2dPoisson& elem2dPoisson::operator =(const elem2dPoisson& velem) {
 	return *this;
 }
 
-void elem2dPoisson::buscaVizinho(int** noEle,int* face,int elem,int nVert, int nEle){
+void elem2dPoissonAxiSim::buscaVizinho(int** noEle,int* face,int elem,int nVert, int nEle){
 	for(int i=0;i<nVert;i++){
 		face[i]=-1;
 		int v1=noEle[elem][i];
@@ -652,20 +685,34 @@ void elem2dPoisson::buscaVizinho(int** noEle,int* face,int elem,int nVert, int n
 	}
 }
 
-void elem2dPoisson::menorIndViz(){
+void elem2dPoissonAxiSim::menorIndViz(){
 
 	cel2D.indVizCres.push_back(cel2D.indEle);
 	for(int i=0;i<cel2D.nvert;i++)if(cel2D.indFace[i]>=0)cel2D.indVizCres.push_back(cel2D.indFace[i]);
 	sort(cel2D.indVizCres.begin(), cel2D.indVizCres.end());
 }
 
-double elem2dPoisson::escalar(double* v1, double* v2, int vDim){
+double elem2dPoissonAxiSim::escalar(double* v1, double* v2, int vDim){
 	double tot=0.;
 	for(int i=0;i<vDim;i++)tot+=v1[i]*v2[i];
 	return tot;
 }
 
-void elem2dPoisson::indraz(int& ind, double& raz,
+double elem2dPoissonAxiSim::escalarAreaAxiSim(double* v1, int vDim, int indFace){
+	double raio;
+	if(indFace==0 || indFace==3)raio=cel2D.coordVert[0][0];
+	else if(indFace==1 || indFace==2)raio=cel2D.coordVert[1][0];
+	double delRaio=cel2D.sFace[indFace][1];
+	double dProf=cel2D.sFace[indFace][0];
+	double areaR=M_PI*((raio+delRaio)*(raio+delRaio)-raio*raio);
+	double areaP=2.*M_PI*raio*dProf;
+	double tot=0.;
+	//for(int i=0;i<vDim;i++)tot+=v1[i]*v2[i];
+	tot=v1[0]*areaP+v1[1]*areaR;
+	return tot;
+}
+
+void elem2dPoissonAxiSim::indraz(int& ind, double& raz,
 		double tempo, int parserie, double* serietemp) {
 
 	for (int i = 0; i <= parserie - 1; i++) {
@@ -684,7 +731,7 @@ void elem2dPoisson::indraz(int& ind, double& raz,
 	}
 }
 
-void elem2dPoisson::faceDetalhes(){
+void elem2dPoissonAxiSim::faceDetalhes(){
 
 	for(int i=0;i<cel2D.nvert;i++){
 		cel2D.modE[i]=0.;
@@ -738,7 +785,7 @@ void elem2dPoisson::faceDetalhes(){
 
 }
 
-void elem2dPoisson::tipoCC(int i,int& diri, int& vn, int& rich, int& acoplado, int& kcc){
+void elem2dPoissonAxiSim::tipoCC(int i,int& diri, int& vn, int& rich, int& acoplado, int& kcc){
 	while(kcc<CC.nDiri && cel2D.ccFace[i]!=CC.ccDir[kcc].rotulo) kcc++;
 	if(kcc<CC.nDiri && cel2D.ccFace[i]==CC.ccDir[kcc].rotulo)diri=1;
 	else{
@@ -758,7 +805,7 @@ void elem2dPoisson::tipoCC(int i,int& diri, int& vn, int& rich, int& acoplado, i
 	}
 }
 
-void elem2dPoisson::atualizaCC(int i){
+void elem2dPoissonAxiSim::atualizaCC(int i){
 	int diri=0;
 	int rich=0;
 	int vn=0;
@@ -815,7 +862,7 @@ void elem2dPoisson::atualizaCC(int i){
 	}
 }
 
-void elem2dPoisson::calcGradGreen(){
+void elem2dPoissonAxiSim::calcGradGreen(){
 	for(int i=0;i<cel2D.nvert;i++){
 		if(kvizinho[i]>=0){
 			double tinter=cel2D.fatG[i]*cel2D.tempC+(1.-cel2D.fatG[i])*(*vizinho[i]).tempC;
@@ -849,7 +896,7 @@ void elem2dPoisson::calcGradGreen(){
 			int kcc=0;
 			int acoplado=0;
 			tipoCC(i, diri, vn, rich,acoplado,kcc);
-			if(diri==1){
+			if(diri==1 || (acoplado==1 && acopD==1)){
 				tempF[i]=ccTD[i];
 			}
 			else if(vn==1){
@@ -865,21 +912,31 @@ void elem2dPoisson::calcGradGreen(){
 				fonteTHR[i]=termoCorda*cel2D.modE[i];
 				tempF[i]=cel2D.tempC+fonteTHR[i];
 			}
-			else if(rich==1 || acoplado==1){
+			else if(rich==1 || (acoplado==1 && acopD==0)){
 				double gradMed [cel2D.dim];
 				for(int j=0; j<cel2D.dim;j++){
 					gradMed[j]=cel2D.gradGreenT[j];
 				}
-				double cordaArea=escalar(cel2D.vecE[i],cel2D.sFace[i],cel2D.dim);
-				double denom=(cel2D.cond*cordaArea/cel2D.modE[i])+ccHR[i]*cel2D.sFaceMod[i];
+				double raio;
+				if(i==0 || i==3)raio=cel2D.coordVert[0][0];
+				else if(i==1 || i==2)raio=cel2D.coordVert[1][0];
+				double delRaio=cel2D.sFace[i][1];
+				double dProf=cel2D.sFace[i][0];
+				double areaR=M_PI*((raio+delRaio)*(raio+delRaio)-raio*raio);
+				double areaP=2.*M_PI*raio*dProf;
+				double areaMod=fabs(areaR)+fabs(areaP);
+				//double cordaArea=escalar(cel2D.vecE[i],cel2D.sFace[i],cel2D.dim);
+				double cordaArea=escalarAreaAxiSim(cel2D.vecE[i], cel2D.dim, i);
+				double denom=(cel2D.cond*cordaArea/cel2D.modE[i])+ccHR[i]*areaMod;
 				double termoCorda=escalar(gradMed,cel2D.vecE[i],cel2D.dim);
-				double escalGradArea=escalar(gradMed,cel2D.sFace[i],cel2D.dim);
+				//double escalGradArea=escalar(gradMed,cel2D.sFace[i],cel2D.dim);
+				double escalGradArea=escalarAreaAxiSim(gradMed, cel2D.dim, i);
 				double correrT=escalGradArea-termoCorda*cordaArea;
-				double num=ccHR[i]*cel2D.sFaceMod[i]*ccTambR[i]+
+				double num=ccHR[i]*areaMod*ccTambR[i]+
 						cel2D.cond*cordaArea*cel2D.tempC/cel2D.modE[i]-cel2D.cond*correrT;
 
 				coefTHRC[i]=(cel2D.cond*cordaArea/cel2D.modE[i])/denom;
-				fonteTHR[i]=(ccHR[i]*cel2D.sFaceMod[i]*ccTambR[i]-cel2D.cond*correrT)/denom;
+				fonteTHR[i]=(ccHR[i]*areaMod*ccTambR[i]-cel2D.cond*correrT)/denom;
 				tempF[i]=num/denom;
 			}
 
@@ -887,12 +944,21 @@ void elem2dPoisson::calcGradGreen(){
 	}
 	for(int j=0; j<cel2D.dim;j++)cel2D.gradGreenT[j]=0.;
 	for(int i=0;i<cel2D.nvert;i++){
-		for(int j=0; j<cel2D.dim;j++)cel2D.gradGreenT[j]+=tempF[i]*cel2D.sFace[i][j];
+		double raio;
+		if(i==0 || i==3)raio=cel2D.coordVert[0][0];
+		else if(i==1 || i==2)raio=cel2D.coordVert[1][0];
+		double delRaio=cel2D.sFace[i][1];
+		double dProf=cel2D.sFace[i][0];
+		double areaR=M_PI*((raio+delRaio)*(raio+delRaio)-raio*raio);
+		double areaP=2.*M_PI*raio*dProf;
+		//for(int j=0; j<cel2D.dim;j++)	cel2D.gradGreenT[j]+=tempF[i]*cel2D.sFace[i][j];
+		cel2D.gradGreenT[0]+=tempF[i]*areaP;
+		cel2D.gradGreenT[1]+=tempF[i]*areaR;
 	}
 	for(int j=0; j<cel2D.dim;j++)cel2D.gradGreenT[j]/=cel2D.vElem;
 }
 
-int elem2dPoisson::achaInd(int i){
+int elem2dPoissonAxiSim::achaInd(int i){
 	int siz=cel2D.indVizCres.size();
 	int saida=-1;
 	for(int j=0;j<siz;j++){
@@ -904,7 +970,7 @@ int elem2dPoisson::achaInd(int i){
 	return saida;
 }
 
-void elem2dPoisson::GeraLocal(){
+void elem2dPoissonAxiSim::GeraLocal(){
 	TL[0]=0.;
 	int diag=achaInd(cel2D.indEle);
 	local.mx[0][diag]=0.;
@@ -919,8 +985,10 @@ void elem2dPoisson::GeraLocal(){
 			condHarm=cel2D.fatG[i]/cel2D.cond+(1-cel2D.fatG[i])/(*vizinho[i]).cond;
 			condHarm=1./condHarm;
 			double termoCorda=escalar(gradMed,cel2D.vecE[i],cel2D.dim);
-			double escalGradArea=escalar(gradMed,cel2D.sFace[i],cel2D.dim);
-			double cordaArea=escalar(cel2D.vecE[i],cel2D.sFace[i],cel2D.dim);
+			//double escalGradArea=escalar(gradMed,cel2D.sFace[i],cel2D.dim);
+			double escalGradArea=escalarAreaAxiSim(gradMed, cel2D.dim, i);
+			//double cordaArea=escalar(cel2D.vecE[i],cel2D.sFace[i],cel2D.dim);
+			double cordaArea=escalarAreaAxiSim(cel2D.vecE[i], cel2D.dim, i);
 			TL[0]+=condHarm*(escalGradArea-termoCorda*cordaArea);
 			double termMat=(condHarm*cordaArea/cel2D.modE[i]);
 			local.mx[0][col]=-termMat;
@@ -933,7 +1001,7 @@ void elem2dPoisson::GeraLocal(){
 			int kcc=0;
 			int acoplado;
 			tipoCC(i, diri, vn, rich,acoplado,kcc);
-			if(diri==1){
+			if(diri==1 || (acoplado==1 && acopD==1)){
 
 				double gradMed [cel2D.dim];
 				for(int j=0; j<cel2D.dim;j++){
@@ -941,14 +1009,17 @@ void elem2dPoisson::GeraLocal(){
 				}
 				double condHarm=cel2D.cond;
 				double termoCorda=escalar(gradMed,cel2D.vecE[i],cel2D.dim);
-				double escalGradArea=escalar(gradMed,cel2D.sFace[i],cel2D.dim);
-				double cordaArea=escalar(cel2D.vecE[i],cel2D.sFace[i],cel2D.dim);
+				//double escalGradArea=escalar(gradMed,cel2D.sFace[i],cel2D.dim);
+				double escalGradArea=escalarAreaAxiSim(gradMed, cel2D.dim, i);
+				//double cordaArea=escalar(cel2D.vecE[i],cel2D.sFace[i],cel2D.dim);
+				double cordaArea=escalarAreaAxiSim(cel2D.vecE[i], cel2D.dim, i);
 				TL[0]+=condHarm*(escalGradArea-termoCorda*cordaArea);
 				double termMat=(condHarm*cordaArea/cel2D.modE[i]);
 				TL[0]+=termMat*ccTD[i];
 				local.mx[0][diag]+=termMat;
+				fluxTface[i][0]=TL[0]-termMat*cel2D.tempC;
 			}
-			else if(rich==1 || acoplado==1){
+			else if(rich==1 || (acoplado==1 && acopD==0)){
 
 				double gradMed [cel2D.dim];
 				for(int j=0; j<cel2D.dim;j++){
@@ -956,8 +1027,10 @@ void elem2dPoisson::GeraLocal(){
 				}
 				double condHarm=cel2D.cond;
 				double termoCorda=escalar(gradMed,cel2D.vecE[i],cel2D.dim);
-				double escalGradArea=escalar(gradMed,cel2D.sFace[i],cel2D.dim);
-				double cordaArea=escalar(cel2D.vecE[i],cel2D.sFace[i],cel2D.dim);
+				//double escalGradArea=escalar(gradMed,cel2D.sFace[i],cel2D.dim);
+				double escalGradArea=escalarAreaAxiSim(gradMed, cel2D.dim, i);
+				//double cordaArea=escalar(cel2D.vecE[i],cel2D.sFace[i],cel2D.dim);
+				double cordaArea=escalarAreaAxiSim(cel2D.vecE[i], cel2D.dim, i);
 				double termMat=(condHarm*cordaArea/cel2D.modE[i]);
 
 				TL[0]+=condHarm*(escalGradArea-termoCorda*cordaArea);
@@ -965,7 +1038,15 @@ void elem2dPoisson::GeraLocal(){
 				local.mx[0][diag]+=termMat*(1.-coefTHRC[i]);
 			}
 			else if(vn==1){
-				TL[0]+=ccTVN[i]*cel2D.sFaceMod[i];
+				double raio;
+				if(i==0 || i==3)raio=cel2D.coordVert[0][0];
+				else if(i==1 || i==2)raio=cel2D.coordVert[1][0];
+				double delRaio=cel2D.sFace[i][1];
+				double dProf=cel2D.sFace[i][0];
+				double areaR=M_PI*((raio+delRaio)*(raio+delRaio)-raio*raio);
+				double areaP=2.*M_PI*raio*dProf;
+				//TL[0]+=ccTVN[i]*cel2D.sFaceMod[i];
+				TL[0]+=ccTVN[i]*(fabs(areaR)+fabs(areaP));
 			}
 		}
 	}
