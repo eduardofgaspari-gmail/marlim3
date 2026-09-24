@@ -2984,7 +2984,7 @@ JSON_entrada_fontePressao_Item::JSON_entrada_fontePressao_Item(){
 	contents["indiFluidoPro"] = make_shared<JSON_entrada_fontePressao_Item_indiFluidoPro>();
 	contents["check"] = make_shared<JSON_entrada_fontePressao_Item_check>();
 	contents["tempoChk"] = make_shared<JSON_entrada_fontePressao_Item_tempoChk>();
-	contents["ambienteGas"] = make_shared<JSON_entrada_fontePressao_Item_ambGas>();
+	contents["ambGas"] = make_shared<JSON_entrada_fontePressao_Item_ambGas>();
 }
 
 JSON_entrada_fontePressao_Item_ativo& JSON_entrada_fontePressao_Item::ativo(){

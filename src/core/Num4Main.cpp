@@ -13306,7 +13306,7 @@ int main(int argc, char **argv) {
                 cout << saidaTexto[frase] << endl;
                 cout << saidaSubTexto[frase] << endl;
                 cout << "*******************************************************************************" << endl;
-            } else if (sistem1.arq.saidaTela == 1)
+            } else
                 cout << "                                  FIM                                  " << endl;
 
             nowGlobFim = time(0);

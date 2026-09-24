@@ -292,16 +292,18 @@ double IPR::preparaChoke(double presM, double presJ, double tempJ, double alfa, 
 	return  maxSup;
 }
 
-double IPR::buscaRaiz(double pfundo, double tfundo, double alfa, double beta, double& massG, double& massL, double vpresAnul){
+double IPR::buscaRaiz(double pfundo, double tfundo, double alfa, double beta,
+		double& massG, double& massL, double& massTot, double vpresAnul){
 	double temp=Tres;
-	//if(vpresAnul<0.)
+	if(vpresAnul<0.)
 		presAnul=0.5*(Pres+pfundo);
-	//else presAnul=vpresAnul;
+	else presAnul=vpresAnul;
 	double massICV;
 	if (chokeICV.AreaGarg < 1e-3 * chokeICV.AreaTub){
 		presAnul=Pres;
 		massICV=0.;
 	}
+	if (chokeICV.AreaGarg >= (1e-3 + 0.5) * chokeICV.AreaTub)presAnul=pfundo;
 	double massIPR=VMas(presAnul, temp);
 	double rhomix=1.;
 	if(pfundo>Pres){
@@ -312,10 +314,14 @@ double IPR::buscaRaiz(double pfundo, double tfundo, double alfa, double beta, do
 		massICV=preparaChoke(presAnul, pfundo, tfundo,alfa,beta, massG, massL);
 	else massICV=massIPR;
 
+	massTot=massIPR;
+
 	double raiz=massIPR-massICV;
 	double presAnulNeg;
 	double presAnulPos;
-	if(fabs(raiz)<1e-5)return presAnul;
+	if(fabs(raiz)<1e-5){
+		return presAnul;
+	}
 	else{
 		if(raiz>0.){
 			while(raiz>0.){
@@ -344,31 +350,41 @@ double IPR::buscaRaiz(double pfundo, double tfundo, double alfa, double beta, do
 			}
 			presAnulPos=presAnul;
 		}
-	}
-	presAnul=zriddr(presAnulNeg, presAnulPos,pfundo, tfundo,alfa,beta,rhomix, massG, massL);
+		presAnul=zriddr(presAnulNeg, presAnulPos,pfundo, tfundo,alfa,beta,rhomix, massG, massL);
 
-	return presAnul;
+		massTot=massG+massL;
+
+		return presAnul;
+	}
 
 }
 
-double IPR::VMasICV(double pfundo, double tfundo, double alfa, double beta,ProFlu fluidoJ, double& massG, double& massL, double vpresAnul){
+double IPR::VMasICV(double pfundo, double tfundo, double alfa, double beta,ProFlu fluidoJ,
+		double& massG, double& massL, double vpresAnul){
 	ProFlu fluTemp;
-	if(Pres<pfundo){
-		fluTemp=FluidoPro;
+	double massTot;
+	fluTemp=FluidoPro;
+	if(Pres<=pfundo){
 		FluidoPro=fluidoJ;
 	}
-	double presAnultemp=buscaRaiz(pfundo, tfundo,alfa,beta, massG, massL, vpresAnul);
-	double massGTemp=massG;
-	double massLTemp=massL;
-	double pderi=pfundo*1.001;
-	if(pderi>presAnultemp && pfundo<presAnultemp)pderi=pfundo*0.999;
-	buscaRaiz(pfundo*1.001, tfundo,alfa,beta, massGTemp, massLTemp, presAnultemp);
-	presAnul=presAnultemp;
-    deriG = (massGTemp-massG)/(0.001*pfundo);
-    deriP = (massLTemp-massL)/(0.001*pfundo);
-    deriC =0.;
-    FluidoPro=fluTemp;
-    return massG+massL;
+	double presAnultemp=buscaRaiz(pfundo, tfundo,alfa,beta, massG, massL,massTot, vpresAnul);
+	if (chokeICV.AreaGarg < (1e-3 + 0.5) * chokeICV.AreaTub){
+		double massGTemp=massG;
+		double massLTemp=massL;
+		double pderi=pfundo*1.001;
+		if(pderi>presAnultemp && pfundo<presAnultemp)pderi=pfundo*0.999;
+		buscaRaiz(pfundo*1.001, tfundo,alfa,beta, massGTemp, massLTemp,massTot, presAnultemp);
+		presAnul=presAnultemp;
+		deriG = (massGTemp-massG)/(0.001*pfundo);
+		deriP = (massLTemp-massL)/(0.001*pfundo);
+		deriC =0.;
+		FluidoPro=fluTemp;
+		return massG+massL;
+	}
+	else{
+		presAnul=pfundo;
+		return massTot;
+	}
 }
 
 double IPR::zriddr(double x1, double x2,double pfundo, double tfundo, double alfa, double beta, double rhomix, double& massG, double& massL) {

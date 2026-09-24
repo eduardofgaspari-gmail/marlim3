@@ -102,9 +102,11 @@ class IPR : public AbsFonte {
 
     double preparaChoke(double presM, double presJ, double tempJ, double alfa, double beta, double& massG, double& massL);
     double SIGN(double a, double b);
-    double buscaRaiz(double pfundo, double tfundo, double alfa, double beta, double& massG, double& massL, double vpresAnul=-1.);
+    double buscaRaiz(double pfundo, double tfundo, double alfa, double beta,
+    		double& massG, double& massL, double& massTot, double vpresAnul=-1.);
     double zriddr(double xNeg, double xPos,double pfundo, double tfundo, double alfa, double beta,double rhomix, double& massG, double& massL);
-    double VMasICV(double pfundo, double tfundo, double alfa, double beta,ProFlu fluidoJ, double& massG, double& massL, double vpresAnul=-1.);
+    double VMasICV(double pfundo, double tfundo, double alfa, double beta,ProFlu fluidoJ,
+    		double& massG, double& massL, double vpresAnul=-1.);
 };
 
 /*!
