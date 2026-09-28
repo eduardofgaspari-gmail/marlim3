@@ -1,0 +1,31 @@
+{
+ "versao":"1.0",
+"configuracaoInicial":{
+  "Rede":true,
+  "ParametroInicial":0.5,
+  "Relaxacao": 0.5,
+  "Transiente":true,
+  "fluidoRede": 1,
+  "TempoSimulacao":30000,
+    "threadRede": 7
+},
+"Arquivos": ["sisprodMonMaster.json","sisprodJusMaster.json"],
+"Conexao":[
+   {
+     "sisprod": 0,
+         "permanente":1,
+	 "ncoletor": 1,
+	 "nafluente": 0,
+	 "coletores": [1],
+	 "afluentes":[]
+   },
+   {
+     "sisprod": 1,
+         "permanente":1,
+	 "ncoletor": 0,
+	 "nafluente": 1,
+	 "coletores": [],
+	 "afluentes":[0]
+   }
+]
+}

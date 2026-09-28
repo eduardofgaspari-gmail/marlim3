@@ -1,0 +1,8678 @@
+{
+  "versao": "1.0",
+  "versaoJson": "1.3.9",
+  "simulador": "poco_injetor",
+  "sistema": "INJETOR",
+  "configuracaoInicial": {
+    "origemGeometria": "POCO"
+  },
+  "CondicaoContPocInjec": {
+    "tipoFluido": 2,
+    "arquivoPvtsim": "fluido-injecao.tab",
+    "usuario": "",
+    "salinidade": 20.0,
+    "vazLiq": 1729810.266545711,
+    "presInjec": 363.7769,
+    "tempInj": 38.20667,
+    "presFundo": 389.1657,
+    "condContorno": 3,
+    "user": ""
+  },
+  "tabela": {
+    "nPontos": 50,
+    "pressaoMaxima": 713.8,
+    "pressaoMinima": 1.0197,
+    "temperaturaMaxima": 150,
+    "temperaturaMinima": -50
+  },
+    "fluidosProducao": [
+    {
+      "id": 0,
+      "api": 28.872290388316287,
+      "rgo": 1e6,
+      "densidadeGas": 0.8970530612244897,
+      "bsw": 0,
+      "densidadeAgua": 1.0,
+      "temp1": 60.0,
+      "visc1": 10.1,
+      "temp2": 40.0,
+      "visc2": 20.6,
+      "tipoEmul": 4,
+      "bswCorte": 0.7,
+      "fracCO2": 0,
+      "correlacaoCritica": 1,
+      "coefAModeloExp": 4.2,
+      "coefBModeloExp": 2.5,
+      "modeloRsPb": 0,
+      "modeloOleoMorto": 0,
+      "modeloOleoVivo": 0,
+      "modeloOleoSubSaturado": 0,
+      "ativo": true
+    }
+  ],
+  "fluidoComplementar": {
+    "id": 0,
+    "massaEspecifica": 1000.0,
+    "compP": 0.0,
+    "compT": 0.0,
+    "tensup": 1e-06,
+    "calorEspecifico": 4000.0,
+    "condutividade": 0.14,
+    "temp1": 20.0,
+    "visc1": 1.0,
+    "temp2": 40.0,
+    "visc2": 0.8,
+    "salinidade": 0.0,
+    "ativo": true
+  },
+  "material": [
+    {
+      "id": 0,
+      "rotulo": "MATER-Riser_3.Section#1.PIPE_MATERIAL",
+      "condutividade": 0.46,
+      "calorEspecifico": 0.02,
+      "rho": 20,
+      "tipo": 0,
+      "visc": 0
+    },
+    {
+      "id": 1,
+      "rotulo": "MATER-Riser_2.Section#1.PIPE_MATERIAL",
+      "condutividade": 0.46,
+      "calorEspecifico": 0.02,
+      "rho": 20,
+      "tipo": 0,
+      "visc": 0
+    },
+    {
+      "id": 2,
+      "rotulo": "MATER-Riser_1.Section#1.PIPE_MATERIAL",
+      "condutividade": 0.455,
+      "calorEspecifico": 0.02,
+      "rho": 20,
+      "tipo": 0,
+      "visc": 0
+    },
+    {
+      "id": 3,
+      "rotulo": "MATER-Flowline_3.Section#1.PIPE_MATERIAL",
+      "condutividade": 0.455,
+      "calorEspecifico": 0.02,
+      "rho": 20,
+      "tipo": 0,
+      "visc": 0
+    },
+    {
+      "id": 4,
+      "rotulo": "MATER-Flowline_1.Section#1.PIPE_MATERIAL",
+      "condutividade": 0.585,
+      "calorEspecifico": 0.02,
+      "rho": 20,
+      "tipo": 0,
+      "visc": 0
+    },
+    {
+      "id": 5,
+      "rotulo": "MATER-Flowline_2.Section#1.PIPE_MATERIAL",
+      "condutividade": 1,
+      "calorEspecifico": 0.02,
+      "rho": 20,
+      "tipo": 0,
+      "visc": 0
+    }
+  ],
+  "secaoTransversal": [
+    {
+      "id": 0,
+      "rotulo": "rugosidade: 0.00331 diametro: 0.1524 wall label: Wall-Riser_3.Section#1",
+      "anular": false,
+      "diametroExterno": 0.3406,
+      "diametroInterno": 0.1524,
+      "rugosidade": 0.003,
+      "camadas": [
+        {
+          "tipoMedicaoCamada": "ESPESSURA",
+          "espessura": 0.0941,
+          "idMaterial": 0,
+          "discretizacao": 1
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "rotulo": "rugosidade: 0.00331 diametro: 0.1524 wall label: Wall-Riser_2.Section#1",
+      "anular": false,
+      "diametroExterno": 0.3406,
+      "diametroInterno": 0.1524,
+      "rugosidade": 0.003,
+      "camadas": [
+        {
+          "tipoMedicaoCamada": "ESPESSURA",
+          "espessura": 0.0941,
+          "idMaterial": 1,
+          "discretizacao": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "rotulo": "rugosidade: 0.00331 diametro: 0.1524 wall label: Wall-Riser_1.Section#1",
+      "anular": false,
+      "diametroExterno": 0.2842,
+      "diametroInterno": 0.1524,
+      "rugosidade": 0.003,
+      "camadas": [
+        {
+          "tipoMedicaoCamada": "ESPESSURA",
+          "espessura": 0.0659,
+          "idMaterial": 2,
+          "discretizacao": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "rotulo": "rugosidade: 0.00331 diametro: 0.1524 wall label: Wall-Flowline_3.Section#1",
+      "anular": false,
+      "diametroExterno": 0.2842,
+      "diametroInterno": 0.1524,
+      "rugosidade": 0.003,
+      "camadas": [
+        {
+          "tipoMedicaoCamada": "ESPESSURA",
+          "espessura": 0.0659,
+          "idMaterial": 3,
+          "discretizacao": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "rotulo": "rugosidade: 0.00331 diametro: 0.1524 wall label: Wall-Flowline_1.Section#1",
+      "anular": false,
+      "diametroExterno": 0.25880000000000003,
+      "diametroInterno": 0.1524,
+      "rugosidade": 0.003,
+      "camadas": [
+        {
+          "tipoMedicaoCamada": "ESPESSURA",
+          "espessura": 0.0532,
+          "idMaterial": 4,
+          "discretizacao": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "rotulo": "rugosidade: 7e-05 diametro: 0.1016 wall label: Wall-Flowline_2.Section#1",
+      "anular": false,
+      "diametroExterno": 0.15239999999999998,
+      "diametroInterno": 0.1016,
+      "rugosidade": 0.003,
+      "camadas": [
+        {
+          "tipoMedicaoCamada": "ESPESSURA",
+          "espessura": 0.0254,
+          "idMaterial": 5,
+          "discretizacao": 1
+        }
+      ]
+    }
+  ],
+  "dutosProducao": [
+    {
+      "id": 0,
+      "idCorte": 0,
+      "angulo": -1.5707963267948966,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-1'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        11.5464334816708,
+        13.4535665183292
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 12.5
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          21.0,
+          21.0
+        ],
+        "velExterna": [
+          20.0,
+          20.0
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 1,
+      "idCorte": 1,
+      "angulo": -1.4670039863378537,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-2'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        18.7319192705289,
+        24.4240537071413,
+        29.2335980944116
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 3,
+          "comprimento": 24.12985702402727
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          21.0,
+          17.9
+        ],
+        "velExterna": [
+          1.1,
+          1.1
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 2,
+      "idCorte": 1,
+      "angulo": -1.4525998379144616,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-3'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        31.5829858494077,
+        32.8666844367932
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 32.22483514310045
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          17.9,
+          15.5
+        ],
+        "velExterna": [
+          1.1,
+          1.1
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 3,
+      "idCorte": 1,
+      "angulo": -1.343541066175713,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-4'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        32.8944963138364,
+        32.7944677516747
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 32.84448203275555
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          15.5,
+          13.4
+        ],
+        "velExterna": [
+          1.1,
+          1.1
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 4,
+      "idCorte": 2,
+      "angulo": -1.343541066175713,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-5'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        32.5674923443088,
+        33.1214717212023
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 32.84448203275555
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          13.4,
+          11.7
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 5,
+      "idCorte": 2,
+      "angulo": -1.3564914429917398,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-6'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        34.509780296701,
+        35.0821732611636
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 34.7959767789323
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          11.7,
+          10.2
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 6,
+      "idCorte": 2,
+      "angulo": -1.3564914429917265,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-7'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        34.7821418300889,
+        34.8098117277759
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 34.7959767789324
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          10.2,
+          8.9
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 7,
+      "idCorte": 2,
+      "angulo": -1.2552349064570991,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-8'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        35.1657545631358,
+        36.3663361374721
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 35.766045350303955
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          8.9,
+          7.8
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 8,
+      "idCorte": 2,
+      "angulo": -1.287810829125089,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-9'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        38.5289102042474,
+        40.6191156713233
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 39.574012937785355
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          7.8,
+          6.8
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 9,
+      "idCorte": 2,
+      "angulo": -1.258827251251223,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-10'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        42.6011207183402,
+        41.4562406487644
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 42.028680683552295
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          6.8,
+          5.9
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 10,
+      "idCorte": 2,
+      "angulo": -1.2081634291883898,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-11'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        37.5081983108838,
+        35.2217130048879
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 36.36495565788585
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          5.9,
+          5.2
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 11,
+      "idCorte": 2,
+      "angulo": -1.1875988905166075,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-12'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        34.2519374709875,
+        34.7527000543262
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 34.50231876265685
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          5.2,
+          4.6
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 12,
+      "idCorte": 2,
+      "angulo": -1.094726996472124,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-13'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        36.8151943538628,
+        35.1917497557164
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 36.0034720547896
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          4.6,
+          4.2
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 13,
+      "idCorte": 2,
+      "angulo": -1.0562182870859238,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-14'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        30.4957078553638,
+        29.2400435837871
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 29.86787571957545
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          4.2,
+          3.8
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 14,
+      "idCorte": 2,
+      "angulo": -1.0053124386400722,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-15'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        30.8961075170586,
+        30.6912288435927
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 30.79366818032565
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.8,
+          3.6
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 15,
+      "idCorte": 2,
+      "angulo": -0.7816621907417857,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-16'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        28.6775570257602,
+        28.1035137637206
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 28.3905353947404
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.6,
+          3.4
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 16,
+      "idCorte": 2,
+      "angulo": -0.7816621907417857,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-17'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        28.8611376606334,
+        27.9199331288473
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 28.39053539474035
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.4,
+          3.3
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 17,
+      "idCorte": 2,
+      "angulo": -0.5012642648715895,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-18'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        25.4955093839999,
+        24.4488596679757
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 24.9721845259878
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.3,
+          3.2
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 18,
+      "idCorte": 2,
+      "angulo": -0.4274852729816817,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-19'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        24.5743365925411,
+        23.666828401684
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 24.12058249711255
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.2,
+          3.1
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 19,
+      "idCorte": 2,
+      "angulo": -0.2900869323210293,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-20'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        21.8759891224529,
+        20.0768415329389
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 20.9764153276959
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.1,
+          3.1
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 20,
+      "idCorte": 2,
+      "angulo": 0.0,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-21'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        18.3072285596236,
+        18.1927714403763
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 18.24999999999995
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.1,
+          3.1
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 21,
+      "idCorte": 2,
+      "angulo": 0.09942173891593427,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-22'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        19.6939196150145,
+        20.6050878169305
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 20.1495037159725
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.1,
+          3.1
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 22,
+      "idCorte": 2,
+      "angulo": 0.2907702957298739,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-23'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        20.8049821291985,
+        21.0520363981647
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 20.928509263681597
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.1,
+          3.2
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 23,
+      "idCorte": 2,
+      "angulo": 0.2907702957298739,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-24'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        21.3488478063795,
+        20.5081707209837
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 20.928509263681597
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.2,
+          3.2
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 24,
+      "idCorte": 2,
+      "angulo": 0.0,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-25'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        18.7012020806543,
+        17.7987979193457
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 18.25
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.2,
+          3.2
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 25,
+      "idCorte": 2,
+      "angulo": -0.10915346290887772,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-26'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        17.642810959208,
+        19.0757129762663
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 18.359261967737147
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.2,
+          3.2
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 26,
+      "idCorte": 2,
+      "angulo": -0.34950239858971477,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-27'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        22.6544411789962,
+        24.0703916189922
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 23.3624163989942
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.2,
+          3.1
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 27,
+      "idCorte": 2,
+      "angulo": -0.46165557976322164,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-28'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        22.7197901006485,
+        22.1805439738323
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 22.450167037240398
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.1,
+          3.1
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 28,
+      "idCorte": 2,
+      "angulo": -0.6530494297189586,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-29'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        22.3759641776095,
+        23.7061364689542
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 23.04105032328185
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.1,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 29,
+      "idCorte": 2,
+      "angulo": -0.8297554714118304,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-30'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        26.4487379628832,
+        27.7689713210764
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 27.1088546419798
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 30,
+      "idCorte": 2,
+      "angulo": -0.9272952180016123,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-31'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        27.3490050784246,
+        27.6509949215754
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 27.5
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 31,
+      "idCorte": 2,
+      "angulo": -0.9685089806599325,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-32'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        28.7026228684536,
+        29.5468406483887
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 29.12473175842115
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 32,
+      "idCorte": 2,
+      "angulo": -1.0873493252276774,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-33'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        30.1507955656301,
+        33.0976036235991
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 31.624199594614602
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 33,
+      "idCorte": 2,
+      "angulo": -1.139886875504142,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-34'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        39.3575999361933,
+        39.8863903722204
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 39.62199515420685
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 34,
+      "idCorte": 2,
+      "angulo": -1.2383035419945807,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-35'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        34.37104182608,
+        33.3372294559427
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 33.854135641011354
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 35,
+      "idCorte": 2,
+      "angulo": -1.2081634291883794,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-36'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        36.2594787163638,
+        36.4704325994081
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 36.36495565788595
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 36,
+      "idCorte": 2,
+      "angulo": -1.3065363068815468,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-37'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        33.9019998804154,
+        36.543440000389
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 35.2227199404022
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 37,
+      "idCorte": 2,
+      "angulo": -1.3236797727509442,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-38'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        46.1991300779687,
+        44.5579082165898
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 45.37851914727925
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 38,
+      "idCorte": 2,
+      "angulo": -1.1646982684772915,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-39'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        33.098465838997,
+        32.2134013828182
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 32.655933610907596
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 39,
+      "idCorte": 2,
+      "angulo": -1.2186171567758843,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-40'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        40.7762149094523,
+        44.4550000296772
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 42.61560746956475
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 40,
+      "idCorte": 2,
+      "angulo": -1.1600436857096188,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-41'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        41.1790952618012,
+        41.7160795073004
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 41.4475873845508
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 41,
+      "idCorte": 2,
+      "angulo": -1.0669939295514403,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-42'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        46.2662651251309,
+        45.0836664566718
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 45.674965790901354
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 42,
+      "idCorte": 2,
+      "angulo": -0.9380474917927133,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-43'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        38.7230772290984,
+        35.6812237218542
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 37.2021504754763
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 43,
+      "idCorte": 2,
+      "angulo": -0.8663022625526751,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-44'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        35.0746127064578,
+        38.4220538846199
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 36.74833329553885
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 44,
+      "idCorte": 2,
+      "angulo": -0.6814331628783955,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-45'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        47.386018527924,
+        45.9611292592481
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 46.67357389358605
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 45,
+      "idCorte": 2,
+      "angulo": -0.33762223738843444,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-46'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        35.3109252419011,
+        34.4260807161976
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 34.86850297904935
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.75,
+          0.75
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 46,
+      "idCorte": 3,
+      "angulo": -0.0022701436598132818,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-47'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        42.3345243671028,
+        45.765702647361
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 44.0501135072319
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 47,
+      "idCorte": 3,
+      "angulo": -0.0045976687531232635,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-48'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        43.0385574722557,
+        43.9623620631146
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 43.50045976768514
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 48,
+      "idCorte": 3,
+      "angulo": -0.0049999583339583225,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-49'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        48.8600103611899,
+        51.141239630998
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.00062499609395
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 49,
+      "idCorte": 3,
+      "angulo": -0.0029999910000504185,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-50'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.2684941377019,
+        49.7319558612861
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.000224999494
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 50,
+      "idCorte": 3,
+      "angulo": -0.0019999973333379144,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-51'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.5155199888577,
+        50.4846800109423
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0000999999
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 51,
+      "idCorte": 3,
+      "angulo": -0.0019999973333379144,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-52'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        52.732062160682,
+        47.268137839118
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0000999999
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 52,
+      "idCorte": 4,
+      "angulo": -0.002857135082646522,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-53'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        36.9409445114218,
+        33.0593412022799
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 35.00014285685085
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 53,
+      "idCorte": 4,
+      "angulo": -0.004231286454429874,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-54'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        33.3982294509085,
+        37.5024052430072
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 35.45031734695785
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 54,
+      "idCorte": 4,
+      "angulo": -0.005999928001558797,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-55'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        47.4155844089513,
+        52.5862155748487
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0008999919
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 55,
+      "idCorte": 4,
+      "angulo": -0.007999829339883904,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-56'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.4303178914481,
+        49.5728820573539
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.001599974401
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 56,
+      "idCorte": 4,
+      "angulo": -0.006999885670030678,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-57'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.927077449705,
+        50.075372520283
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.001224984993996
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 57,
+      "idCorte": 4,
+      "angulo": -0.007999829339883904,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-58'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0143026072792,
+        49.9888973415228
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.001599974401
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 58,
+      "idCorte": 4,
+      "angulo": -0.0049999583339583225,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-59'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9983468409488,
+        50.0029031512392
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.000624996094004
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 59,
+      "idCorte": 4,
+      "angulo": -0.008999757011810028,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-60'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0021313101267,
+        50.0019186078644
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.00202495899555
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 60,
+      "idCorte": 4,
+      "angulo": -0.009999666686665238,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-61'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0021772237133,
+        50.0028226512927
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.002499937503
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 61,
+      "idCorte": 4,
+      "angulo": -0.012999267740918122,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-62'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0041389162114,
+        50.0043107268065
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.004224821508956
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 62,
+      "idCorte": 4,
+      "angulo": -0.011999424049759465,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-63'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0039918334771,
+        50.0032079073419
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0035998704095
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 63,
+      "idCorte": 4,
+      "angulo": -0.011999424049759465,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-64'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0029406150102,
+        50.0042591258088
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0035998704095
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 64,
+      "idCorte": 4,
+      "angulo": -0.012999267740918122,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-65'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0083856248397,
+        50.0000640181783
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.004224821509
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 65,
+      "idCorte": 4,
+      "angulo": -0.013999085440883985,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-66'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9806319164088,
+        50.0291676034382
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0048997599235
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 66,
+      "idCorte": 4,
+      "angulo": -0.011999424049759465,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-67'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.1472108742472,
+        49.8599888665718
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0035998704095
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 67,
+      "idCorte": 4,
+      "angulo": -0.012999267740918122,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-68'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.1777324903208,
+        50.8307171526962
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0042248215085
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 68,
+      "idCorte": 4,
+      "angulo": -0.00905407854088756,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-69'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        55.1460612917765,
+        44.2580130714009
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.7020371815887
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 69,
+      "idCorte": 4,
+      "angulo": -0.005836509601314407,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-70'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        27.8872174966954,
+        23.5136579822301
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 25.70043773946275
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 70,
+      "idCorte": 4,
+      "angulo": 0.00988110132806652,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-71'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        25.3449612708602,
+        25.2575090245705
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 25.30123514771535
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 71,
+      "idCorte": 4,
+      "angulo": 0.007842976437827519,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-72'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        23.2768772298835,
+        27.7246913734452
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 25.50078430166435
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 72,
+      "idCorte": 4,
+      "angulo": 0.010901451183225393,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-73'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        44.8218572283792,
+        56.0841386291518
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.4529979287655
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 73,
+      "idCorte": 4,
+      "angulo": 0.012011434330559293,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-74'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.9268958852221,
+        48.9803110620248
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.95360347362345
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 74,
+      "idCorte": 4,
+      "angulo": 0.011010566043045962,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-75'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.7847023568226,
+        50.1213535156816
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.9530279362521
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 75,
+      "idCorte": 4,
+      "angulo": 0.016014646789209025,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-76'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9756870464559,
+        49.9371249447999
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.956405995627904
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 76,
+      "idCorte": 4,
+      "angulo": 0.016998362617244307,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-77'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0034306646824,
+        50.0110182914555
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.00722447806895
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 77,
+      "idCorte": 4,
+      "angulo": 0.0170153747128427,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-78'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9579305279198,
+        49.9565328895455
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.95723170873265
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 78,
+      "idCorte": 4,
+      "angulo": 0.016998362617248852,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-79'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0049921994235,
+        50.0094567567144
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.00722447806895
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 79,
+      "idCorte": 4,
+      "angulo": 0.01801606855405268,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-80'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9682735052179,
+        49.9479413950675
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.958107450142705
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 80,
+      "idCorte": 4,
+      "angulo": 0.01701537471284725,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-81'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.94703089614,
+        49.9674325213253
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.95723170873265
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 81,
+      "idCorte": 4,
+      "angulo": 0.015998634876342618,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-82'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0080464003424,
+        50.0047527805626
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0063995904525
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 82,
+      "idCorte": 4,
+      "angulo": 0.0170153747128427,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-83'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9566864962501,
+        49.9577769212152
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.95723170873265
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 83,
+      "idCorte": 4,
+      "angulo": 0.015998634876347163,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-84'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0073780915691,
+        50.0054210893359
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0063995904525
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 84,
+      "idCorte": 4,
+      "angulo": 0.013012278552897645,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-85'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9514545497834,
+        49.9570035506193
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.95422905020135
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 85,
+      "idCorte": 4,
+      "angulo": 0.01099955636553984,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-86'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0217826735498,
+        49.9842671434492
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0030249084995
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 86,
+      "idCorte": 4,
+      "angulo": 0.010019704758999888,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-87'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.8445630350304,
+        49.9604468592632
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.902504947146795
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 87,
+      "idCorte": 4,
+      "angulo": 0.00794422214914154,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-88'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.334179057195,
+        50.368998648377
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.351588852786
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 88,
+      "idCorte": 4,
+      "angulo": 0.0059999280015542505,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-89'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0638986110899,
+        49.9379013727101
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0008999919
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 89,
+      "idCorte": 4,
+      "angulo": 0.0029999910000504185,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-90'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9891798578129,
+        50.011270141175
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.00022499949395
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 90,
+      "idCorte": 4,
+      "angulo": 0.0009999996666659571,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-91'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0041144596529,
+        49.9959355403341
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0000249999935
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 91,
+      "idCorte": 4,
+      "angulo": -0.0019999973333379144,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-92'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9867508965047,
+        50.0134491032953
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.0000999999
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 92,
+      "idCorte": 4,
+      "angulo": -0.0029999910000504185,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-93'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0761503078219,
+        49.9242996911661
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.000224999493994
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 93,
+      "idCorte": 4,
+      "angulo": -0.005040279898413135,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-94'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.5605713933426,
+        49.6406886792997
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.60063003632115
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 94,
+      "idCorte": 4,
+      "angulo": -0.002988038915956128,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-95'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.1676732886935,
+        50.2327749174775
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.2002241030855
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 95,
+      "idCorte": 4,
+      "angulo": -0.0010030086907291036,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-96'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.8338250169251,
+        49.8662251335137
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.8500250752194
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 96,
+      "idCorte": 4,
+      "angulo": -0.0019860947073313644,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-97'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.3314727821346,
+        50.3687258274014
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.350099304767994
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 97,
+      "idCorte": 4,
+      "angulo": 0.0,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-98'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9772755199319,
+        49.8227244800682
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.90000000000005
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 98,
+      "idCorte": 4,
+      "angulo": 0.00100200367267397,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-99'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9029710798454,
+        49.8970790203424
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.9000250500939
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 99,
+      "idCorte": 4,
+      "angulo": 0.0,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-100'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.8061975922784,
+        49.7938024077216
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.8
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 100,
+      "idCorte": 4,
+      "angulo": -0.0040023800692913615,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-101'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.8612434190535,
+        50.079557058029
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.97040023854125
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 101,
+      "idCorte": 4,
+      "angulo": -0.0009911781866597373,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-102'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.4531130385535,
+        50.4369365203595
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 50.4450247794565
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 102,
+      "idCorte": 4,
+      "angulo": -0.0010010006666649586,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-103'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0333565436234,
+        49.8666935064143
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.950025025018846
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 103,
+      "idCorte": 4,
+      "angulo": -0.0010010006666649586,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-104'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9355359735966,
+        49.9645140764408
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.950025025018704
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 104,
+      "idCorte": 4,
+      "angulo": 0.0,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-105'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9547349434637,
+        49.9452650565363
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.95
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 105,
+      "idCorte": 4,
+      "angulo": 0.0010010006666649586,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-106'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.9362372492603,
+        49.9638128007771
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.950025025018704
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 106,
+      "idCorte": 4,
+      "angulo": 0.0,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-107'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        50.0263650610639,
+        49.8736349389361
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.95
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 107,
+      "idCorte": 4,
+      "angulo": 0.0030029939759950363,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-108'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        49.5046934598506,
+        50.3957569895842
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.9502252247174
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 108,
+      "idCorte": 4,
+      "angulo": 0.0020021997471880476,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-109'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        52.6295162532679,
+        47.2606839667737
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 49.9451001100208
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 109,
+      "idCorte": 4,
+      "angulo": 0.0010024054381116464,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-110'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        37.0616615590552,
+        25.4998920956336,
+        16.0262642372826,
+        9.51820787839315,
+        5.45445533145456,
+        3.06312659328467,
+        1.69555798979273,
+        0.932002859364159,
+        0.508881576015461
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 9,
+          "comprimento": 11.084450013364014
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.35,
+          0.35
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 110,
+      "idCorte": 5,
+      "angulo": 0.0,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-111'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        0.277439929014955,
+        0.222560070985045
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 0.25
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.3,
+          0.3
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    },
+    {
+      "id": 111,
+      "idCorte": 5,
+      "angulo": 0.0,
+      "rotulo": "'Riser_3' 'PIPE:' 'PIPE-112'",
+      "acoplamentoTermico": 0,
+      "direcaoConveccao": 0,
+      "ambienteExterno": 1,
+      "agrupamento": false,
+      "dxCelula": [
+        0.244150079880494,
+        0.255849920119506
+      ],
+      "discretizacao": [
+        {
+          "nCelulas": 2,
+          "comprimento": 0.25
+        }
+      ],
+      "condicoesIniciais": {
+        "compInter": [
+          0,
+          1
+        ],
+        "temp": [
+          30,
+          30
+        ],
+        "pressao": [
+          30,
+          30
+        ],
+        "holdup": [
+          0.1,
+          0.1
+        ],
+        "bet": [
+          0.0,
+          0.0
+        ],
+        "uls": [
+          0.0,
+          0.0
+        ],
+        "ugs": [
+          0.0,
+          0.0
+        ],
+        "tempExterna": [
+          3.0,
+          3.0
+        ],
+        "velExterna": [
+          0.3,
+          0.3
+        ],
+        "kExterna": [
+          100,
+          100
+        ],
+        "calorEspecificoExterno": [
+          100,
+          100
+        ],
+        "rhoExterno": [
+          1000,
+          1000
+        ],
+        "viscExterna": [
+          1,
+          1
+        ],
+        "vazaoMassicaGas": []
+      }
+    }
+  ],
+  "ipr": [],
+  "chokeSup": {
+    "coeficienteDescarga": 0.84,
+    "modelo": 0,
+    "abertura": [
+      1.0
+    ],
+    "tempo": [
+      0.0
+    ]
+  },
+  "perfilProducao": {
+    "tempo": [
+      0
+    ],
+    "ativo": true,
+    "pressao": true,
+    "temperatura": true,
+    "holdup": true,
+    "bet": true,
+    "ugs": true,
+    "uls": true,
+    "ug": false,
+    "ul": false,
+    "arra": true,
+    "viscosidadeLiquido": false,
+    "viscosidadeGas": false,
+    "rhog": false,
+    "rhol": false,
+    "vazaoMassicaGas": true,
+    "vazaoMassicaLiquido": true,
+    "c0": true,
+    "ud": true,
+    "RGO": true,
+    "deng": true,
+    "yco2": true,
+    "calor": false,
+    "masstrans": false,
+    "cpgas": true,
+    "cpliq": true,
+    "QLstd": true,
+    "QGstd": true,
+    "QLstdTotal": true,
+    "api": true,
+    "bsw": true
+  }
+}

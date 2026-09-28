@@ -1,0 +1,56 @@
+{
+ "versao":"1.0",
+"configuracaoInicial":{
+  "Rede":true,
+  "ParametroInicial":0.5,
+  "Relaxacao": 0.5,
+  "Transiente":true,
+  "fluidoRede": 1,
+  "TempoSimulacao":20000,
+    "threadRede": 7
+},
+"Arquivos": ["sisprodA2bb.json" , "sisprodA3.json","sisprodA2bb.json" , "sisprod4.json", "sisprod7.json" ],
+"Conexao":[
+   {
+     "sisprod": 0,
+         "permanente":1,
+	 "ncoletor": 2,
+	 "nafluente": 0,
+	 "coletores": [3,4],
+	 "afluentes":[]
+   },
+   {
+     "sisprod": 1,
+         "permanente":1,
+	 "ncoletor": 2,
+	 "nafluente": 0,
+	 "coletores": [3,4],
+	 "afluentes":[]
+   },
+   {
+     "sisprod": 2,
+         "permanente":1,
+	 "ncoletor": 2,
+	 "nafluente": 0,
+	 "coletores": [3,4],
+	 "afluentes":[]
+   },
+   {
+     "sisprod": 3,
+         "permanente":1,
+	 "ncoletor": 0,
+	 "nafluente": 3,
+	 "coletores": [],
+	 "afluentes":[0,1,2]
+   }
+,
+   {
+     "sisprod": 4,
+         "permanente":1,
+	 "ncoletor": 0,
+	 "nafluente": 3,
+	 "coletores": [],
+	 "afluentes":[0,1,2]
+   }
+]
+}

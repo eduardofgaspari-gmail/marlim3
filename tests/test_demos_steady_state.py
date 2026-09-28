@@ -49,14 +49,26 @@ DEMOS = {
     "pt-br/parada-longo-Combinado-BCS-GLC-PIG-completo.mr3": ["PVTSIM-MARLIM.tab"],
     "pt-br/producaoSimplificado.mr3":                [],
     "pt-br/atritoTuboLiso.mr3":                      [],
+    "pt-br/2zonas-2VGLs-2-Check-AP.mr3":             ["PVTSIM-MARLIM.tab"],
+    "pt-br/injec-Liq-TempoResidencia.mr3":           [],
+    "pt-br/PR#98-2zonas-2VGLs-2-Check-correcPerfTerm-Axisim.json": [],
+    "pt-br/PR#98-2zonas-2VGLs-2-Check-correcPerfTerm-ICV.json": [],
+    "pt-br/PR#98-BCS-Recircula.json": [],
+    "pt-br/PR#98-caixaValv.json": [],
+    "pt-br/PR#98-testeMultiBCS.json": [],
+    "pt-br/caso-redeDoistramos/rede.json": [],
+    "pt-br/redeTransiente/redeTrans.json": [],
+    "pt-br/injetor-tabela/injetor-tabela.json": ["fluido-injecao.tab"],
+    "pt-br/injetor-tabela/injetor-composicional.json": ["fluido-injecao.ctm"],
+
 
     # Renamed EN demos at demos/
-    "2zones-2GLVs-2-Check-correcThermProf.mr3": ["PVTSIM-MARLIM.tab"],
-    "extended-ESP-pumpEfic.mr3":                 ["PVTSIM-MARLIM.tab"],
-    "injec-Liq-ResidenceTime.mr3":               [],
-    "extended-shutdown-combined-ESP-CGL-PIG-complete.mr3": ["PVTSIM-MARLIM.tab"],
-    "simplifiedProduction.mr3":                  [],
-    "smoothPipeFriction.mr3":                    [],
+#    "2zones-2GLVs-2-Check-correcThermProf.mr3": ["PVTSIM-MARLIM.tab"],
+#    "extended-ESP-pumpEfic.mr3":                 ["PVTSIM-MARLIM.tab"],
+#    "injec-Liq-ResidenceTime.mr3":               [],
+#    "extended-shutdown-combined-ESP-CGL-PIG-complete.mr3": ["PVTSIM-MARLIM.tab"],
+#    "simplifiedProduction.mr3":                  [],
+#    "smoothPipeFriction.mr3":                    [],
 }
 
 # ============================================================================
