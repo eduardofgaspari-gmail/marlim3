@@ -10178,6 +10178,31 @@ void Ler::parse_master2(JSON_entrada_master2& master2_json) {
 			master2.tempo[0] = 0;
 		}
 		master2.cd=0.84;
+
+		master2.cxvVerifica=0;
+		master2.cxv.lCaixa=0;
+		master2.cxv.indFlu=0;
+		master2.cxv.secaoTrans=0;
+		master2.cxv.formac=0;
+		master2.cxv.lito=-1;
+		master2.cxv.ambiente=0;
+		master2.cxv.tamb=0;
+		master2.cxv.velAmb=0;
+		master2.cxv.nMon=0;
+		master2.cxv.serieAberturaMon=0;
+		master2.cxv.tempMon=0;
+		master2.cxv.nJus=0;
+		master2.cxv.serieAberturaJus=0;
+		master2.cxv.tempJus=0;
+		master2.cxv.posic=-1;
+		master2.cxv.temperaturaFonte=0.;
+		master2.cxv.massLiqP=0;
+		master2.cxv.massGas=0;
+		master2.cxv.massLiqC=0;
+		master2.cxv.tempoFonte=0;
+		master2.cxv.nfonte=0;
+
+
 	} catch (exception& e) {
 		// incluir falha
 		logger.log_write_logs_and_exit(LOGGER_FALHA,
@@ -13425,7 +13450,7 @@ void Ler::lerArq() {
 				else{
 					celp[j].difusTerm3D=0;
 					celp[j].difusTerm3DFE=0;
-					celp[j].difusTerm3DAcop="vazio";
+					celp[j].difusTerm3DAcop="trocaTermica3D-vazio";
 				}
 				if (lingas > 0 && para == 0) {
 					if (j > 1) {
@@ -14171,7 +14196,7 @@ void Ler::copiaArq(Ler& arqAntigo) {
 			else{
 				celp[j].difusTerm3D=0;
 				celp[j].difusTerm3DFE=0;
-				celp[j].difusTerm3DAcop="vazio";
+				celp[j].difusTerm3DAcop="TrocaTermica3D-vazio";
 			}
 			if (lingas > 0 && para == 0) {
 				if (j > 1) {
@@ -21737,6 +21762,27 @@ void Ler::copia_master2(Ler& arqAntigo) {
 				master2.tempo[i] = arqAntigo.master2.tempo[i];
 			}
 		}
+		master2.cxvVerifica=0;
+		master2.cxv.lCaixa=0;
+		master2.cxv.indFlu=0;
+		master2.cxv.secaoTrans=0;
+		master2.cxv.formac=0;
+		master2.cxv.lito=-1;
+		master2.cxv.ambiente=0;
+		master2.cxv.tamb=0;
+		master2.cxv.velAmb=0;
+		master2.cxv.nMon=0;
+		master2.cxv.serieAberturaMon=0;
+		master2.cxv.tempMon=0;
+		master2.cxv.nJus=0;
+		master2.cxv.serieAberturaJus=0;
+		master2.cxv.tempJus=0;
+		master2.cxv.temperaturaFonte=0.;
+		master2.cxv.massLiqP=0;
+		master2.cxv.massGas=0;
+		master2.cxv.massLiqC=0;
+		master2.cxv.tempoFonte=0;
+		master2.cxv.nfonte=0;
 	}
 }
 

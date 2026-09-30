@@ -102,6 +102,11 @@
           "description": "Nome do arquivo JSON de leitura para análise paramétrica (válido quando AP == true).",
           "default": "leituraAP.json"
         },
+        "paralelizaAP": {
+          "type": "boolean",
+          "default": false,
+          "description": "Se true, paraleliza a análise paramétrica (AP)."
+        },
         "trackRgo": {
           "type": "boolean",
           "default": true,
@@ -329,11 +334,6 @@
           "description": "Coordenada y do início da linha de serviço, usada para inferência da inclinação no caso modoXY = true. Válido para linhaGas = true.",
           "unit": "m",
           "default": 0
-        },
-        "paralelizaAP": {
-          "type": "boolean",
-          "default": false,
-          "description": "Se true, paraleliza a análise paramétrica (AP)."
         },
         "modoDifus3D": {
           "type": "boolean",
@@ -719,7 +719,31 @@
         "correlacoesEscorregamento": {
           "type": "integer",
           "description": ""
-        }
+        },
+        "pocoTermAxiSim": {
+          "type": "boolean",
+          "default": false,
+          "description": "Indica se o modelo de troca térmica axissimétrica na formação será utilizado na modelagem do escoamento na região do poço. Este modelo se limita apenas à região sólida (formação, trecho cimentado, revestimento), podendo conter várias camadas com propriedades térmicas distintas, como usualmente é feito na definição de seções transversais. A discretização radial é definida no JSON complementar indicado por 'pocoAxiSimJson', e a discretização axial segue exatamente a discretização do modelo 1D no poço."
+        },
+        "anulAxiSim": {
+          "type": "boolean",
+          "default": false,
+          "description": "Indica se a troca térmica do modelo 1D será entre a região anular do poço (caso com injeção de gás) ou diretamente com a coluna. Se true, a troca é com o anular; se false, é diretamente com a coluna. Válido apenas quando pocoTermAxiSim = true."
+        },
+        "pocoAxiSimJson": {
+          "type": "string",
+          "description": "Nome do arquivo JSON complementar que contém as informações do modelo de troca térmica axissimétrica na formação (camadas radiais, propriedades térmicas, discretização radial, etc.). Válido apenas quando pocoTermAxiSim = true. A estrutura deste JSON complementar não é definida neste schema."
+        },
+        "imprimeInventario": {
+      	   "type": "boolean",
+           "default": false,
+           "description": "Indica se o inventário de líquido e gás de um trecho será impresso no arquivo logEvento.dat junto com a impressão de outros eventos. Ao final de uma simulação, estes inventários são registrados independentemente desta opção. Quando true, tem-se uma visão mais frequente destes inventários, mas a integração contínua de inventário pode diminuir o desempenho do simulador. O default é false."
+         },
+        "fatorFric": {
+      	   "type": "integer",
+           "default": 0,
+           "description": "Opção de se usar a aproximação de Serghides que calcula o fator de fricção sem a necessidade de processos iterativos, se zero, utiliza-se o fator de fricção usual com iterações, se 1, utiliza-se Serghides, o default é zero.."
+         }
       }
     },
     "tabela": {
@@ -848,9 +872,11 @@
               4,
               5,
               6,
-              7
+              7,
+              8,
+              9
             ],
-            "description": "Indicador de correlação de emulsão para modificação da viscosidade do óleo. 0 -> viscosidade de mistura óleo-água, ponderada pelo título de água; 1 -> Woeflin fraco; 2 -> Woeflin médio; 3 -> Woeflin forte; 4 -> exponencial; 5 -> Pal Rhodes; 6 -> par BSW X multiplicador informado pelo usuário; 7 -> viscosidade de óleo abaixo do BSW de saturação. Válido para os três tipos de fluido."
+            "description": "Indicador de correlação de emulsão para modificação da viscosidade do óleo. 0 -> viscosidade de mistura óleo-água, ponderada pelo título de água; 1 -> Woeflin fraco; 2 -> Woeflin médio; 3 -> Woeflin forte; 4 -> exponencial; 5 -> Pal Rhodes; 6 -> par BSW X multiplicador informado pelo usuário; 7 -> viscosidade de óleo abaixo do BSW de saturação; 8 -> Modelo Bacia de Campos; 9 -> Ronnigsen. Válido para os três tipos de fluido."
           },
           "coefAModeloExp": {
             "type": "number",
@@ -1164,7 +1190,84 @@
             "items": {
               "type": "number"
             }
-          }
+          },
+          "caixaValvula": {
+            "type": "boolean",
+            "default": false,
+            "description": "Indica que a funcionalidade caixa de válvula será utilizada. Quando true, o trecho confinado entre as válvulas hipotéticas (montante e jusante) é analisado por meio de um balanço integral simples quando ambas se encontram fechadas, monitorando pressão, temperatura, título e fração de vazio. Observação, quando a caixa de válvula está ativa, é desnecessário os objetos tempo e abertura da válvula, eles são obtidos das séries temporais das válvulas hipotéticas, a menor área de abertura de uma destas válvulas será a admitida para a válvula no sistema"
+          },
+          "compCaixa": {
+            "type": "number",
+            "unit": "m",
+            "description": "Comprimento em metros da região entre válvulas (comprimento do trecho confinado da caixa de válvula)."
+          },
+          "indSecTrans": {
+            "type": "integer",
+            "description": "Indicativo de qual seção transversal será utilizada para o trecho confinado entre válvulas."
+          },
+          "ambiente": {
+            "type": "integer",
+            "description": "Indicativo de que ambiente externo será utilizado para a troca térmica no espaço entre válvulas."
+          },
+          "tempAmbiente": {
+            "type": "number",
+            "unit": "degC",
+            "description": "Temperatura ambiente para a troca térmica no espaço entre válvulas."
+          },
+          "velAmbiente": {
+            "type": "number",
+            "unit": "m/s",
+            "description": "Velocidade externa para definição do coeficiente de película externo no espaço entre válvulas."
+          },
+          "formac": {
+            "type": "integer",
+            "description": "Caso tenha contato com formação."
+          },
+          "aberturaMon": {
+            "type": "array",
+            "description": "Série de abertura da válvula hipotética a montante da caixa de válvula.",
+            "items": { "type": "number" }
+          },
+          "tempoAberturaMon": {
+            "type": "array",
+            "description": "Tempo de abertura da válvula hipotética a montante.",
+            "items": { "type": "number", "unit": "s" }
+          },
+          "aberturaJus": {
+            "type": "array",
+            "description": "Série de abertura da válvula hipotética a jusante da caixa de válvula.",
+            "items": { "type": "number" }
+          },
+          "tempoAberturaJus": {
+            "type": "array",
+            "description": "Tempo de abertura da válvula hipotética a jusante.",
+            "items": { "type": "number", "unit": "s" }
+          },
+          "temperaturaFonte": {
+            "type": "number",
+            "unit": "degC",
+            "description": "Temperatura para eventuais fontes de massa no espaço confinado."
+          },
+          "tempoFonte": {
+            "type": "array",
+            "description": "Tempos para eventuais fontes de massa no espaço confinado.",
+            "items": { "type": "number", "unit": "s" }
+          },
+          "massLiqP": {
+            "type": "array",
+            "description": "Fonte de massa de líquido produzido no espaço confinado.",
+            "items": { "type": "number", "unit": "kg/s" }
+          },
+          "massLiqC": {
+            "type": "array",
+            "description": "Fonte de massa de líquido complementar no espaço confinado.",
+            "items": { "type": "number", "unit": "kg/s" }
+          },
+          "massGas": {
+            "type": "array",
+            "description": "Fonte de massa de gás no espaço confinado.",
+            "items": { "type": "number", "unit": "kg/s" }
+          }																
         }
       }
     },
@@ -2265,7 +2368,43 @@
               "type": "number",
               "unit": "(sm3/d)/(kgf/cm2)"
             }
-          }
+          },
+         "ICV": {
+           "type": "boolean",
+           "default": false,
+           "description": "Indica se a opção ICV (válvula de controle de injeção acoplada à IPR) será utilizada. Quando true, distingue-se a pressão de fundo em frente à ICV e a pressão no anular, que efetivamente define o draw down da IPR. As propriedades tempoICV, abertura, cd, curvaCV, x1 e cv1 passam a ser consideradas."
+         },
+         "tempoICV": {
+           "type": "array",
+           "description": "Instantes de tempo em que são informados os eventos de operação (abertura/fechamento/restrição) da ICV.",
+           "items": { "type": "number", "unit": "s" }
+         },
+         "abertura": {
+           "type": "array",
+           "description": "Abertura da ICV ao longo do tempo (razão entre áreas ou deslocamento da haste, a depender da variável 'curvaCV').",
+           "items": { "type": "number" }
+         },
+         "cd": {
+           "type": "number",
+           "default": 0.84,
+           "description": "Coeficiente de descarga da ICV."
+         },
+         "curvaCV": {
+           "type": "integer",
+           "enum": [0, 1],
+           "default": 0,
+           "description": "Indicativo do significado da curva na variável 'abertura'. Se 0, corresponde às razões entre a área livre da válvula e a área da tubulação ao longo do tempo. Se 1, corresponde ao deslocamento da haste da válvula ao longo do tempo."
+         },
+         "x1": {
+           "type": "array",
+           "description": "Abcissa da curva CV (porcentagem do deslocamento da haste da válvula). Válido para curvaCV = 1.",
+           "items": { "type": "number" }
+         },
+         "cv1": {
+           "type": "array",
+           "description": "Ordenada da curva CV (coeficiente de válvula; capacidade de vazão de válvula para uma unidade de pressão tomando-se como referência a água). Usada para correlacionar deslocamento de haste com abertura de válvula. Válido para curvaCV = 1.",
+           "items": { "type": "number", "unit": "(gal/min)/(psi)" }
+         }
         }
       }
     },
@@ -2322,7 +2461,7 @@
           },
           "eficiencia": {
             "type": "array",
-            "description": "Valores de eficiência da curva de BCS.",
+            "description": "Valores de eficiência da curva de BCS. Em porcentagem.",
             "items": {
               "type": "number"
             }
@@ -2346,11 +2485,11 @@
           },
           "nestagFab": {
             "type": "integer",
-            "description": "Número de estágios com que o fabricante levantou a curva da bomba."
+            "description": "Número de estágios com que o fabricante levantou a curva da bomba, default=1."
           },
           "EficienciaMotor": {
             "type": "number",
-            "description": "Eficiência do motor."
+            "description": "Eficiência do motor. Em porcentagem, default=100%"
           },
           "FrequenciaMinima": {
             "type": "number",
@@ -2364,10 +2503,112 @@
           },
           "fracTermMotorEfic": {
             "type": "number",
-            "description": "Fração de calor do motor do BCS que é transferida para o fluido (afeta balanço térmico)."
+            "description": "Fração de calor do motor do BCS que é transferida para o fluido (afeta balanço térmico), default=0."
           }
         }
       }
+    },
+    "multibcs": {
+  	"type": "array",
+  	"description": "Cada objeto dentro dessa array corresponde a uma bomba centrífuga submersa (BCS) modelada com marcha estágio a estágio (multibcs). Diferentemente do objeto 'bcs', no qual o cálculo de incremento de pressão e potência é feito de forma direta (multiplicando-se os valores de um estágio pelo número de estágios), no multibcs faz-se uma marcha interna, estágio a estágio, percorrendo todo o conjunto da BCS. Isso permite corrigir, a cada estágio, variáveis como título de gás livre e temperatura do fluido, com eventual impacto na viscosidade e na degradação do head indicado pela curva de bomba (geralmente obtida com água). Permite também definir curvas distintas dentro do conjunto (array 'curva'), o que é útil para BCS com estágios iniciais mais axiais (para manipular altas frações de gás na sucção) seguidos de estágios mais radiais. Ao longo da marcha, é possível calcular o ganho de temperatura devido às ineficiências de cada estágio. Para correntes bifásicas óleo-gás, pode-se desligar o equilíbrio termodinâmico (equilTerm = false), evitando a dissolução do gás no óleo a cada estágio e considerando-a apenas após a marcha.",
+  	"items": {
+    	   "type": "object",
+    	   "properties": {
+      	   	"id": {
+        	   "type": "integer",
+        	   "description": "Inteiro identificador da multibcs."
+      	   	},
+      	   "	comprimentoMedido": {
+        	  "type": "number",
+        	  "description": "Comprimento onde a multibcs se encontra no sistema de produção.",
+        	   "unit": "m"
+      	   	},
+      	   	"EficienciaMotor": {
+        	   "type": "number",
+        	   "default": 100,
+        	   "description": "Eficiência do motor.",
+        	   "unit": "%"
+      	   	},
+      	   	"freqref": {
+        	   "type": "number",
+        	   "description": "Frequência de referência em que foram levantadas as curvas do fabricante.",
+        	   "unit": "Hz"
+      	   	},
+      	   	"equilTerm": {
+        	   "type": "boolean",
+        	   "default": true,
+        	   "description": "Indica se há equilíbrio termodinâmico na marcha nos estágios. Se true, a dissolução do gás no óleo é considerada a cada estágio. Se false, o equilíbrio é desligado durante a marcha e a dissolução é considerada apenas após a marcha, quando se lida com correntes bifásicas óleo-gás."
+      	   	},
+      	   	"fracTermMotorEfic": {
+        	   "type": "number",
+        	   "default": 0,
+        	   "description": "Fração de calor do motor da BCS que é transferida para o fluido (afeta o balanço térmico)."
+      	   	},
+      	   	"ativo": {
+        	   "type": "boolean",
+        	   "description": "Indica se a multibcs está ou não ativa."
+      	   	},
+      	   	"tempo": {
+        	   "type": "array",
+        	   "description": "Instantes de tempo em que são definidas as variações de frequência da bomba em uma simulação.",
+        	   "items": { "type": "number", "unit": "s" }
+      	   	},
+      	   	"frequencia": {
+        	   "type": "array",
+        	   "description": "Frequências que são alteradas no tempo ao longo da simulação.",
+        	   "items": { "type": "number", "unit": "Hz" }
+      	   	},
+      	   	"FrequenciaMinima": {
+        	   "type": "number",
+        	   "description": "Frequência mínima de operação da BCS.",
+        	   "unit": "Hz"
+      	   	},
+      	   	"correcHI": {
+        	   "type": "boolean",
+        	   "default": true,
+        	   "description": "Correção da curva devido à degradação do head por meio da norma do Hydraulic Institute."
+      	   	},
+      	   	"curva": {
+        	   "type": "array",
+        	   "description": "Array com as curvas cadastradas dentro do conjunto multibcs. A lógica é que o conjunto seja cadastrado de montante a jusante.",
+        	   "items": {
+          	      "type": "object",
+          	      "properties": {
+            	      	"vazao": {
+              		      "type": "array",
+              		      "description": "Vazões da curva do fabricante.",
+              	      	      "items": { "type": "number", "unit": "BPD" }
+            	      	},
+            	      	"head": {
+              		      "type": "array",
+              		      "description": "Head levantado para a curva do fabricante. O array deve ter a mesma dimensão do array 'vazao'.",
+              		      "items": { "type": "number", "unit": "ft" }
+            	      	},
+            	      	"potencia": {
+              		      "type": "array",
+              		      "description": "Potência levantada para a curva do fabricante. O array deve ter a mesma dimensão do array 'vazao'.",
+              		      "items": { "type": "number", "unit": "hp" }
+            	      	},
+            	      	"eficiencia": {
+              		      "type": "array",
+              		      "description": "Eficiência levantada para a curva do fabricante. O array deve ter a mesma dimensão do array 'vazao'.",
+              		      "items": { "type": "number", "unit": "%" }
+            	      	},
+            	      	"nestag": {
+              		      "type": "integer",
+              		      "description": "Número de estágios deste conjunto da multibcs."
+            	      	},
+            	      	"nestagFab": {
+              		      "type": "integer",
+              		      "default": 1,
+              		      "description": "Número de estágios com que o fabricante levantou a curva da bomba."
+            	      	}
+          	      }
+                   }
+          
+           	}
+           }
+        }
     },
     "bombaVolumetrica": {
       "type": "array",
@@ -2534,6 +2775,84 @@
             "unit": "(gal/min)/(psi)"
           }
         }
+      },
+
+      "caixaValvula": {
+        "type": "boolean",
+        "default": false,
+        "description": "Indica que a funcionalidade caixa de válvula será utilizada. Quando true, o trecho confinado entre as válvulas hipotéticas (montante e jusante) é analisado por meio de um balanço integral simples quando ambas se encontram fechadas, monitorando pressão, temperatura, título e fração de vazio. Observação, quando a caixa de válvula está ativa, é desnecessário os objetos tempo e abertura da válvula, eles são obtidos das séries temporais das válvulas hipotéticas, a menor área de abertura de uma destas válvulas será a admitida para a válvula no sistema"
+      },
+      "compCaixa": {
+        "type": "number",
+        "unit": "m",
+        "description": "Comprimento em metros da região entre válvulas (comprimento do trecho confinado da caixa de válvula)."
+      },
+      "indSecTrans": {
+        "type": "integer",
+        "description": "Indicativo de qual seção transversal será utilizada para o trecho confinado entre válvulas."
+      },
+      "ambiente": {
+        "type": "integer",
+        "description": "Indicativo de que ambiente externo será utilizado para a troca térmica no espaço entre válvulas."
+      },
+      "tempAmbiente": {
+        "type": "number",
+        "unit": "degC",
+        "description": "Temperatura ambiente para a troca térmica no espaço entre válvulas."
+      },
+      "velAmbiente": {
+        "type": "number",
+        "unit": "m/s",
+        "description": "Velocidade externa para definição do coeficiente de película externo no espaço entre válvulas."
+      },
+      "formac": {
+        "type": "integer",
+        "description": "Caso tenha contato com formação."
+      },
+      "aberturaMon": {
+        "type": "array",
+        "description": "Série de abertura da válvula hipotética a montante da caixa de válvula.",
+        "items": { "type": "number" }
+      },
+      "tempoAberturaMon": {
+        "type": "array",
+        "description": "Tempo de abertura da válvula hipotética a montante.",
+        "items": { "type": "number", "unit": "s" }
+      },
+      "aberturaJus": {
+        "type": "array",
+        "description": "Série de abertura da válvula hipotética a jusante da caixa de válvula.",
+        "items": { "type": "number" }
+      },
+      "tempoAberturaJus": {
+        "type": "array",
+        "description": "Tempo de abertura da válvula hipotética a jusante.",
+        "items": { "type": "number", "unit": "s" }
+      },
+      "temperaturaFonte": {
+        "type": "number",
+        "unit": "degC",
+        "description": "Temperatura para eventuais fontes de massa no espaço confinado."
+      },
+      "tempoFonte": {
+        "type": "array",
+        "description": "Tempos para eventuais fontes de massa no espaço confinado.",
+        "items": { "type": "number", "unit": "s" }
+      },
+      "massLiqP": {
+        "type": "array",
+        "description": "Fonte de massa de líquido produzido no espaço confinado.",
+        "items": { "type": "number", "unit": "kg/s" }
+      },
+      "massLiqC": {
+        "type": "array",
+        "description": "Fonte de massa de líquido complementar no espaço confinado.",
+        "items": { "type": "number", "unit": "kg/s" }
+      },
+      "massGas": {
+        "type": "array",
+        "description": "Fonte de massa de gás no espaço confinado.",
+        "items": { "type": "number", "unit": "kg/s" }
       }
     },
     "master2": {
@@ -2711,6 +3030,16 @@
               "type": "number",
               "unit": "s"
             }
+          },
+          "recircula": {
+            "type": "boolean",
+            "default": false,
+            "description": "Indica se o acessório fontePressao será utilizado como sistema de recirculação. Quando true, 'comprimentoMedido' indica o ponto a jusante da recirculação e 'comprimentoMedidoRecircula' indica o ponto a montante. A lógica é: ponto a jusante recirculando para ponto a montante (ex.: descarga da bomba para sucção da bomba). O fluido ambiente é sempre o fluido do ponto de recirculação, e o fluido recirculado vem do ponto a jusante. Pode ocorrer inversão de sentido; para impedi-la, deve-se atuar no objeto 'check'."
+          },
+          "comprimentoMedidoRecircula": {
+            "type": "number",
+            "description": "Comprimento do ponto a montante da recirculação. Válido quando recircula = true.",
+            "unit": "m"
           }
         }
       }
@@ -3035,6 +3364,11 @@
         "viscosidadeLiquido": {
           "type": "boolean",
           "description": "Viscosidade do líquido (cP)."
+        },        
+        "viscosidadeOleoMorto": {
+          "type": "boolean",
+          "default": false,
+          "description": "Registra o perfil da viscosidade do óleo morto (cP) ao longo da linha de produção."
         },
         "viscosidadeGas": {
           "type": "boolean",
@@ -3263,6 +3597,10 @@
         "correlacaoBB": {
           "type": "number",
           "description": "Quando ativo (1), registra perfil da correlação de Beggs-Brill para cálculo de holdup. Aplicável apenas quando tipoModeloDrift=0."
+        },
+        "titulo": {
+          "type": "number",
+          "description": "Quando ativo (1), registra perfil de título de gás livre."
         }
       }
     },
@@ -3377,6 +3715,18 @@
         "angulo": {
           "type": "boolean",
           "description": "Ângulo do duto (rad)."
+        },
+        "diametroInterno": {
+          "type": "boolean",
+          "description": "Diâmetro Interno da tubulação (m)."
+        },
+        "tempParede": {
+          "type": "boolean",
+          "description": "Temperatura da Parede na região interna da tubulação (C)."
+        },
+        "subResfria": {
+          "type": "boolean",
+          "description": "Diferencial de temperatura em relação ao envelope de hidratos (subresfriamento)."
         }
       }
     },
@@ -3666,6 +4016,16 @@
             "items": {
               "type": "number"
             }
+          },
+          "presAnulICV": {
+            "type": "boolean",
+            "default": false,
+            "description": "Registra a tendência da pressão no anular para o caso de IPR com ICV (válvula de controle de injeção acoplada à IPR). Válido quando a IPR correspondente possui ICV = true."
+          },
+          "caixaValvula": {
+            "type": "boolean",
+            "default": false,
+            "description": "Registra as tendências de pressão, temperatura, fração de vazio e título no trecho confinado da caixa de válvula (entre as válvulas a montante e a jusante). Para isso, deve-se informar em 'comprimentoMedido' o comprimento em que a válvula se encontra."
           }
         }
       }
@@ -3807,6 +4167,18 @@
           "Hext": {
             "type": "boolean",
             "description": "Coeficiente de pelicula externo (W / [m2 K])."
+          },
+          "diametroInterno": {
+            "type": "boolean",
+            "description": "Diâmetro Interno da tubulação (m)."
+          },
+          "tempParede": {
+            "type": "boolean",
+            "description": "Temperatura da Parede na região interna da tubulação (C)."
+          },
+          "subResfria": {
+            "type": "boolean",
+            "description": "Diferencial de temperatura em relação ao envelope de hidratos (subresfriamento)."
           }
         }
       }
