@@ -2518,7 +2518,7 @@
         	   "type": "integer",
         	   "description": "Inteiro identificador da multibcs."
       	   	},
-      	   "	comprimentoMedido": {
+      	   "comprimentoMedido": {
         	  "type": "number",
         	  "description": "Comprimento onde a multibcs se encontra no sistema de produção.",
         	   "unit": "m"
