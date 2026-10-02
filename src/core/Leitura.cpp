@@ -3025,10 +3025,10 @@ void Ler::parse_condcont_pocinjec(JSON_entrada_CondicaoContPocInjec& condcont_js
 		// caso a propriedade "ativo" esteja habilitada
 		if (is_ativo(condcont_json)) {
 			// caso o elemento usuario exista
-			if (condcont_json.usuario().exists()) {
+			//if (condcont_json.usuario().exists()) {
 				// obter o valor da chave
-				usuario = string(condcont_json.usuario());
-			}
+				//usuario = string(condcont_json.usuario());
+			//}
 
 			condpocinj.tipoFlui = condcont_json.tipoFluido();
 			// caso o tipo do fluido seja 1 - agua salinizada
@@ -4879,8 +4879,11 @@ void Ler::parse_fluido_gas(JSON_entrada_fluidoGas& fluido_gas_json) {
 				for(int j=1;j<flug.npseudo;j++)flug.fracMol[j]=flup[0].fracMol[j];
 			}
 			int modeloBlackO=1;
-			if (fluido_gas_json.linhaServComposicional().exists())
-				modeloBlackO=fluido_gas_json.linhaServComposicional();
+			if (fluido_gas_json.linhaServComposicional().exists()){
+				int comp;
+				comp=fluido_gas_json.linhaServComposicional();
+				modeloBlackO=1-comp;
+			}
 			if(modeloBlackO==1){
 				//tabg=0;
 				flug.tab=tabg;
@@ -8139,10 +8142,10 @@ void Ler::parse_fonte_gaslift(JSON_entrada_fonteGasLift& fonte_gaslift_json) {
 				valvgl[i].cd =
 						fonte_gaslift_json[indAtivo].cdvgl();
 
-				if (fonte_gaslift_json[indAtivo].frecupera().exists())
-					valvgl[i].frec =
-							fonte_gaslift_json[indAtivo].frecupera();
-				else
+				//if (fonte_gaslift_json[indAtivo].frecupera().exists())
+					//valvgl[i].frec =
+							//fonte_gaslift_json[indAtivo].frecupera();
+				//else
 					valvgl[i].frec = 0.;
 
 				if (fonte_gaslift_json[indAtivo].cdvLiq().exists())
@@ -8151,10 +8154,10 @@ void Ler::parse_fonte_gaslift(JSON_entrada_fonteGasLift& fonte_gaslift_json) {
 				else
 					valvgl[i].cdLiq = 0.84;
 
-				if (fonte_gaslift_json[indAtivo].frecuperaLiq().exists())
-					valvgl[i].frecLiq =
-							fonte_gaslift_json[indAtivo].frecuperaLiq();
-				else
+				//if (fonte_gaslift_json[indAtivo].frecuperaLiq().exists())
+					//valvgl[i].frecLiq =
+							//fonte_gaslift_json[indAtivo].frecuperaLiq();
+				//else
 					valvgl[i].frecLiq = valvgl[i].frec;
 
 				if (valvgl[i].tipo != 1) {
@@ -10455,7 +10458,7 @@ void Ler::parse_chokeInj(JSON_entrada_chokeInj& chokeInj_json) {
  *
  * \tparam Objeto JSON correspondente a chokeSup
  */
-void Ler::parse_fontechk(JSON_entrada_fonteChoke& fontechk_json) {
+/*void Ler::parse_fontechk(JSON_entrada_fonteChoke& fontechk_json) {
 	// criar variavel para o nome da propriedade json em processo de parse
 	string chaveJson("#/fontechk");
 	try {
@@ -10504,7 +10507,7 @@ void Ler::parse_fontechk(JSON_entrada_fonteChoke& fontechk_json) {
 		logger.log_write_logs_and_exit(LOGGER_FALHA,
 		LOG_ERR_UNEXPECTED_EXCEPTION, "", chaveJson, e.what());
 	}
-}
+}*/
 
 /*!
  * Converter os elementos "pig" do arquivo Json do MRT em struct pig.
