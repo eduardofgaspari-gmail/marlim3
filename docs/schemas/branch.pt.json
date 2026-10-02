@@ -717,14 +717,6 @@
           "type": "number",
           "description": ""
         },
-        "origemGeometria": {
-          "type": "integer",
-          "description": ""
-        },
-        "correlacoesEscorregamento": {
-          "type": "integer",
-          "description": ""
-        },
         "pocoTermAxiSim": {
           "type": "boolean",
           "default": false,
@@ -4429,6 +4421,15 @@
           "type": "boolean",
           "default": false,
           "description": "Indica se o usuário irá informar o valor da difusividade do depósito."
+        },
+        "TIACusuarioAtiva": {
+          "type": "boolean",
+          "default": false,
+          "description": "Indica se o usuário irá informar o valor da TIAC."
+        },
+        "TIACusuario": {
+          "type": "number",
+          "description": "Valor da TIAC em (C) informada pelo usuário."
         },
         "alteraViscFlu": {
           "type": "boolean",
