@@ -276,6 +276,11 @@
           "unit": "degC",
           "description": "Temperatura de retorno do gás para o caso em que há escoamento reverso na última fronteira do sistema em simulações transientes. Se não for informada, admite-se a temperatura ambiente."
         },
+        "razCompGasReves": {
+          "type": "number",
+          "unit": "fração volumétrica",
+          "description": "Para o caso de simulações de gasodutos, fração volumétrica de impurezas líquidas na corrente de gás (água ou outro líquido) que pode retornar à tubulação no caso de um fluxo reverso."
+        },
         "chutePerm": {
           "type": "number",
           "default": -1,
@@ -820,6 +825,10 @@
           "items": {
             "type": "number"
           }
+        },
+        "linhaServComposicional": {
+          "type": "boolean",
+          "description": "Utilizada apenas para a situação de cálculos composicionais. True indica que o usuário informa que os cálculos de propriedades na linha de serviço serão feitas usando um modelo composicional, se false, será utilizado o modelo usual, black-oil, para o cálculo das propriedades do gás na linha de serviço. Se a opção for cálculo black-oil e o usuário informar densidade de gás, fração de CO2 e correlação para cálculo do fator de compressibilidade, estas informações serão utilizadas para definir o gás, senão, utilizando as informações composicionais, será feito um cálculo das propriedades standard do gás que, assim, definirão o gás."
         }
       }
     },
@@ -1025,6 +1034,15 @@
             "default": 1,
             "description": "Para o caso tabela flash, caso esta opção seja 1, usa as correlações de água do black oil para calcular o coeficiente Joule-Thompson. Caso seja 0, usa-se o coeficiente Joule-Thompson informado na tabela. Válido para o caso tabela flash (no composicional, todas as propriedades relativas à água são calculadas pelo modelo black oil)."
           },
+          "modeloCondBlackOil": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ],
+            "default": 0,
+            "description": "Para o caso tabela flash, caso esta opção seja 1, usa as correlações de condutividade de óleo morto, provenientes do modelo black oil. Caso seja 0, usa-se as condutividades informadas na tabela. Válido para o caso tabela flash (no composicional, todas as propriedades relativas à condutividade são calculadas pelo modelo black oil)."
+          },
           "fracMolarUsuario": {
             "type": "boolean",
             "default": false,
@@ -1222,6 +1240,10 @@
           "formac": {
             "type": "integer",
             "description": "Caso tenha contato com formação (0 = sem contato com formação, troca térmica com ambiente externo; 1 = contato com formação, não exige ambiente externo)."
+          },
+          "lito": {
+            "type": "integer",
+            "description": "Caso formac seja 1, deve-se indicar qual conjunto de propriedades cadastradas em 'formacao' deve ser utilizado, lito indica o índice do vetor cadastrado de propriedades de formação será utilizado."
           },
           "aberturaMon": {
             "type": "array",
@@ -1592,6 +1614,38 @@
           }
         }
       }
+    },
+    "fonteCalor": {
+  	"type": "array",
+  	"description": "Cada objeto dentro dessa array corresponde a uma fonte de calor posicionada no centro de uma célula do duto. A célula é escolhida como aquela cujo centro está mais próximo do comprimento informado em 'comprimentoMedido'.",
+  	"items": {
+    		"type": "object",
+    		"properties": {
+      			"ativo": {
+        		"type": "boolean",
+        		"description": "Indica se esta fonte de calor será considerada ou não. Se true, será considerada."
+      			},
+      			"id": {
+        			"type": "integer",
+        			"description": "Inteiro identificador da fonte de calor."
+      			},
+      			"comprimentoMedido": {
+        			"type": "number",
+        			"description": "Posição onde se encontra a fonte de calor no duto. Com este valor de comprimento, o código busca a célula cujo centro está mais próximo deste comprimento e posiciona a fonte de calor nesta célula.",
+        			"unit": "m"
+      			},
+      			"tempo": {
+        			"type": "array",
+        			"description": "Vetor com os tempos em que serão cadastradas as variações da fonte de calor nesta posição.",
+        			"items": { "type": "number", "unit": "s" }
+      			},
+      			"calor": {
+        			"type": "array",
+        			"description": "Vetor com os valores da potência da fonte de calor que varia com o tempo. Deve ter a mesma dimensão do vetor 'tempo'. Valores positivos indicam fornecimento de calor ao fluido; valores negativos, remoção.",
+        			"items": { "type": "number", "unit": "kW" }
+      			}
+    		}
+  	}
     },
     "material": {
       "type": "array",
@@ -3319,35 +3373,39 @@
         },
         "pressao": {
           "type": "boolean",
-          "description": "Pressão (kgf/cm2)."
+          "description": "Pressão no centro da célula (kgf/cm2)."
+        },
+        "pressaoFront": {
+          "type": "boolean",
+          "description": "Pressão na fronteira esquerda da célula (kgf/cm2)."
         },
         "temperatura": {
           "type": "boolean",
-          "description": "Temperatura (degC)."
+          "description": "Temperatura no centro da célula (degC)."
         },
         "holdup": {
           "type": "boolean",
-          "description": "Holdup de líquido."
+          "description": "Holdup de líquido no centro da célula."
         },
         "bet": {
           "type": "boolean",
-          "description": "Fração volumétrica de fluido complementar em relação à fase líquida."
+          "description": "Fração volumétrica de fluido complementar em relação à fase líquida no centro da célula."
         },
         "ugs": {
           "type": "boolean",
-          "description": "Velocidade superficial do gás (m/s)."
+          "description": "Velocidade superficial do gás na fronteira esquerda da célula (m/s)."
         },
         "uls": {
           "type": "boolean",
-          "description": "Velocidade superficial do líquido (m/s)."
+          "description": "Velocidade superficial do líquido na fronteira esquerda da célula (m/s)."
         },
         "ug": {
           "type": "boolean",
-          "description": "Velocidade do gás (m/s)."
+          "description": "Velocidade do gás na fronteira esquerda da célula (m/s)."
         },
         "ul": {
           "type": "boolean",
-          "description": "Velocidade do líquido (m/s)."
+          "description": "Velocidade do líquido na fronteira esquerda da célula (m/s)."
         },
         "arra": {
           "type": "boolean",
@@ -3377,6 +3435,18 @@
         "rhoMix": {
           "type": "boolean",
           "description": "Massa específica da mistura (kg/m3) in situ."
+        },
+        "condliq": {
+          "type": "boolean",
+          "description": "Condutividade da mistura de líquidos, ponderados pela fração voilumétrica beta, (J/[kg C])."
+        },
+        "condoleo": {
+          "type": "boolean",
+          "description": "Condutividade do óleo (J/[kg C])."
+        },
+        "condgas": {
+          "type": "boolean",
+          "description": "Condutividade do gás (J/[kg C])."
         },
         "RS": {
           "type": "boolean",
@@ -4398,6 +4468,33 @@
           "description": "Quando ativo, pondera condutividade térmica do depósito considerando condutividade do óleo e do depósito de parafina."
         }
       }
+    },
+    "detalheCelulaUnitaria": {
+  		"type": "array",
+  		"description": "Cada objeto dentro dessa array corresponde a um detalhamento de célula unitária de golfada hidrodinâmica (conjunto bolha + pistão de líquido) em uma posição do duto. Não se confunde com golfadas de longo período induzidas por terreno (golfadas severas). Utiliza-se os valores médios de escoamento na posição solicitada (velocidade superficial de gás e líquido, pressão, temperatura e fração de vazio) e, com modelos padrões de células unitárias, obtém-se um possível detalhamento da golfada hidrodinâmica que eventualmente esteja passando por esta posição. A célula é escolhida como aquela cujo centro está mais próximo do comprimento informado em 'comprimentoMedido'.",
+  		"items": {
+    			"type": "object",
+    			"properties": {
+      				"ativo": {
+        			"type": "boolean",
+        			"description": "Indica se deve ser feito o detalhamento da célula unitária na posição indicada. Se true, será feito o detalhamento."
+      				},
+      				"id": {
+        				"type": "integer",
+        				"description": "Inteiro identificador do detalhamento."
+      				},
+      				"comprimentoMedido": {
+        				"type": "number",
+        				"description": "Posição onde será feito o detalhamento da célula unitária no duto. Com este valor de comprimento, o código busca a célula cujo centro está mais próximo deste comprimento e faz o detalhamento de célula unitária nesta célula.",
+        				"unit": "m"
+      				},
+      				"tempoImpres": {
+        				"type": "array",
+        				"description": "Série de tempos que indica em que momentos este detalhamento de célula unitária será feito e registrado. Como são muitas informações, não é viável registrar o detalhamento a todo passo de tempo; o usuário escolhe os momentos de impressão. A cada momento de impressão, é gravado um arquivo do tipo .dat com o padrão de nome 'relatCelUnit-Pos-<posição da célula>Tempo-<momento em que foi gravado>.dat'.",
+        				"items": { "type": "number", "unit": "s" }
+      				}
+    			}
+  		}
     },
     "intermitenciaSevera": {
       "type": "array",
