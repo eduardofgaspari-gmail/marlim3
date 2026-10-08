@@ -8628,7 +8628,7 @@ void Ler::parse_valv(JSON_entrada_valvula& valvula_json) {
 						double aberinf = valv[i].cxv.serieAberturaMon[ind];
 						double abersup;
 						if (ind < valv[i].cxv.nMon - 1)
-							abersup = valv[i].cxv.serieAberturaMon[ind]+1;
+							abersup = valv[i].cxv.serieAberturaMon[ind+1];
 						else
 							abersup = valv[i].cxv.serieAberturaMon[ind];
 						abre0=aberinf * raz + (1 - raz) * abersup;
@@ -8636,7 +8636,7 @@ void Ler::parse_valv(JSON_entrada_valvula& valvula_json) {
 						indraz(ind, raz, tempo, valv[i].cxv.nJus, valv[i].cxv.tempJus);
 						aberinf = valv[i].cxv.serieAberturaJus[ind];
 						if (ind <valv[i].cxv.nJus - 1)
-							abersup = valv[i].cxv.serieAberturaJus[ind]+1;
+							abersup = valv[i].cxv.serieAberturaJus[ind+1];
 						else
 							abersup = valv[i].cxv.serieAberturaJus[ind];
 						abre1=aberinf * raz + (1 - raz) * abersup;
@@ -10113,7 +10113,7 @@ void Ler::parse_master1(JSON_entrada_master1& master1_json) {
 				double aberinf = master1.cxv.serieAberturaMon[ind];
 				double abersup;
 				if (ind < master1.cxv.nMon - 1)
-					abersup = master1.cxv.serieAberturaMon[ind]+1;
+					abersup = master1.cxv.serieAberturaMon[ind+1];
 				else
 					abersup = master1.cxv.serieAberturaMon[ind];
 				abre0=aberinf * raz + (1 - raz) * abersup;
@@ -10121,7 +10121,7 @@ void Ler::parse_master1(JSON_entrada_master1& master1_json) {
 				indraz(ind, raz, tempo, master1.cxv.nJus, master1.cxv.tempJus);
 				aberinf = master1.cxv.serieAberturaJus[ind];
 				if (ind < master1.cxv.nJus - 1)
-					abersup = master1.cxv.serieAberturaJus[ind]+1;
+					abersup = master1.cxv.serieAberturaJus[ind+1];
 				else
 					abersup = master1.cxv.serieAberturaJus[ind];
 				abre1=aberinf * raz + (1 - raz) * abersup;
