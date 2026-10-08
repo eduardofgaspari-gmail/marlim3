@@ -7782,30 +7782,68 @@ void Ler::parse_ipr(JSON_entrada_ipr& ipr_json) {
 						}
 					}
 				}
-				// parse do vetor de jp
-				IPRS[i].seriejp = (int) ipr_json[indAtivo].ii().size();
-				if(IPRS[i].seriejp>0){
-					IPRS[i].jp = new double[IPRS[i].seriejp];
-					IPRS[i].tjp = new double[IPRS[i].seriejp];
+				if (ipr_json[indAtivo].ii().exists()){
+					// parse do vetor de jp
+					IPRS[i].seriejp = (int) ipr_json[indAtivo].ii().size();
+					if(IPRS[i].seriejp>0){
+						IPRS[i].jp = new double[IPRS[i].seriejp];
+						IPRS[i].tjp = new double[IPRS[i].seriejp];
+						// caso os tamanhos dos vetores das chaves difiram entre si
+						if (ipr_json[indAtivo].ii().size()
+								!= ipr_json[indAtivo].tempoii().size()) {
+							// RN-073: chaves ii e tempoii com tamanhos diferentes
+							logger.log(LOGGER_FALHA,
+									LOG_ERR_PARSE_BUSINESS_RULE_VALIDATION, chaveJson,
+									chaveJson,
+									"Chaves #/ipr/ii e #/ipr/tempoii com tamanhos diferentes");
+						} else {
+							// loop para parse do vetor de jp / ii
+							for (int j = 0; j < IPRS[i].seriejp; j++) {
+								IPRS[i].jp[j] = ipr_json[indAtivo].ii()[j];
+								IPRS[i].tjp[j] =
+										ipr_json[indAtivo].tempoii()[j];
+							}
+						}
+					}
+					else{
+						if(IPRS[i].tipoIPR!=2){
+							IPRS[i].seriejp =IPRS[i].serieip;
+							IPRS[i].jp = new double[IPRS[i].seriejp];
+							IPRS[i].tjp = new double[IPRS[i].seriejp];
+							for (int j = 0; j < IPRS[i].seriejp; j++) {
+								IPRS[i].jp[j] = IPRS[i].ip[j];
+								IPRS[i].tjp[j] = IPRS[i].tip[j];
+							}
+						}
+						else{
+							IPRS[i].seriejp =1;
+							IPRS[i].jp = new double[IPRS[i].seriejp];
+							IPRS[i].tjp = new double[IPRS[i].seriejp];
+							for (int j = 0; j < IPRS[i].seriejp; j++) {
+								IPRS[i].jp[j] = 1.8*IPRS[i].qMax[0]/IPRS[i].pres[0];
+								IPRS[i].tjp[j] = 0.;
+							}
+						}
+					}
 				}
 				else{
-					IPRS[i].jp = 0;
-					IPRS[i].tjp = 0;
-				}
-				// caso os tamanhos dos vetores das chaves difiram entre si
-				if (ipr_json[indAtivo].ii().size()
-						!= ipr_json[indAtivo].tempoii().size()) {
-					// RN-073: chaves ii e tempoii com tamanhos diferentes
-					logger.log(LOGGER_FALHA,
-					LOG_ERR_PARSE_BUSINESS_RULE_VALIDATION, chaveJson,
-							chaveJson,
-							"Chaves #/ipr/ii e #/ipr/tempoii com tamanhos diferentes");
-				} else {
-					// loop para parse do vetor de jp / ii
-					for (int j = 0; j < IPRS[i].seriejp; j++) {
-						IPRS[i].jp[j] = ipr_json[indAtivo].ii()[j];
-						IPRS[i].tjp[j] =
-								ipr_json[indAtivo].tempoii()[j];
+					if(IPRS[i].tipoIPR!=2){
+						IPRS[i].seriejp =IPRS[i].serieip;
+						IPRS[i].jp = new double[IPRS[i].seriejp];
+						IPRS[i].tjp = new double[IPRS[i].seriejp];
+						for (int j = 0; j < IPRS[i].seriejp; j++) {
+							IPRS[i].jp[j] = IPRS[i].ip[j];
+							IPRS[i].tjp[j] = IPRS[i].tip[j];
+						}
+					}
+					else{
+						IPRS[i].seriejp =1;
+						IPRS[i].jp = new double[IPRS[i].seriejp];
+						IPRS[i].tjp = new double[IPRS[i].seriejp];
+						for (int j = 0; j < IPRS[i].seriejp; j++) {
+							IPRS[i].jp[j] = 1.8*IPRS[i].qMax[0]/IPRS[i].pres[0];
+							IPRS[i].tjp[j] = 0.;
+						}
 					}
 				}
 				// parse do valor
