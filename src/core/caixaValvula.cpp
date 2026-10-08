@@ -472,10 +472,10 @@ void caixaValv::estadotermo(double pmon, double tmon, double alfmon, double betm
 		double cpg=FluidoPro.CalorGas(pres, temp);
 		double cpmix=alf*cpg+(1.-alf)*cplmix;
 
-		double kpp=FluidoPro.CalorLiq(pres, temp);
-		double kpc=fluidocol.CalorLiq(pres, temp);
+		double kpp=FluidoPro.CondLiq(pres, temp);
+		double kpc=fluidocol.CondLiq(pres, temp);
 		double kplmix=bet*kpc+(1.-bet)*kpp;
-		double kpg=FluidoPro.CalorGas(pres, temp);
+		double kpg=FluidoPro.CondGas(pres, temp);
 		double kpmix=alf*kpg+(1.-alf)*kplmix;
 
 		double usl=vazMassL/(rholmix*secaoTrans.area);
@@ -518,10 +518,10 @@ void caixaValv::estadotermo(double pmon, double tmon, double alfmon, double betm
 		double cpg=FluidoPro.CalorGas(pres, temp);
 		double cpmix=alf*cpg+(1.-alf)*cplmix;
 
-		double kpp=FluidoPro.CalorLiq(pres, temp);
-		double kpc=fluidocol.CalorLiq(pres, temp);
+		double kpp=FluidoPro.CondLiq(pres, temp);
+		double kpc=fluidocol.CondLiq(pres, temp);
 		double kplmix=bet*kpc+(1.-bet)*kpp;
-		double kpg=FluidoPro.CalorGas(pres, temp);
+		double kpg=FluidoPro.CondGas(pres, temp);
 		double kpmix=alf*kpg+(1.-alf)*kplmix;
 
 		double usl=vazMassL/(rholmix*secaoTrans.area);
@@ -562,10 +562,10 @@ void caixaValv::estadotermo(double pmon, double tmon, double alfmon, double betm
 		double cpg=FluidoPro.CalorGas(pres, temp);
 		double cpmix=alf*cpg+(1.-alf)*cplmix;
 
-		double kpp=FluidoPro.CalorLiq(pres, temp);
-		double kpc=fluidocol.CalorLiq(pres, temp);
+		double kpp=FluidoPro.CondLiq(pres, temp);
+		double kpc=fluidocol.CondLiq(pres, temp);
 		double kplmix=bet*kpc+(1.-bet)*kpp;
-		double kpg=FluidoPro.CalorGas(pres, temp);
+		double kpg=FluidoPro.CondGas(pres, temp);
 		double kpmix=alf*kpg+(1.-alf)*kplmix;
 
 		double usl=vazMassL/(rholmix*secaoTrans.area);
@@ -600,10 +600,10 @@ void caixaValv::estadotermo(double pmon, double tmon, double alfmon, double betm
 		double cpg=FluidoPro.CalorGas(pres, temp);
 		double cpmix=alf*cpg+(1.-alf)*cplmix;
 
-		double kpp=FluidoPro.CalorLiq(pres, temp);
-		double kpc=fluidocol.CalorLiq(pres, temp);
+		double kpp=FluidoPro.CondLiq(pres, temp);
+		double kpc=fluidocol.CondLiq(pres, temp);
 		double kplmix=bet*kpc+(1.-bet)*kpp;
-		double kpg=FluidoPro.CalorGas(pres, temp);
+		double kpg=FluidoPro.CondGas(pres, temp);
 		double kpmix=alf*kpg+(1.-alf)*kplmix;
 
 		double usl=vazMassL/(rholmix*secaoTrans.area);
