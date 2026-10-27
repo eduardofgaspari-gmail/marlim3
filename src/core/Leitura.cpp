@@ -21,6 +21,8 @@ void Ler::iniciarVariaveis() {
 	nCompTotalUnidadesG = 0;
 	saidaClassica=0;
 	dtmaxserie.parserie = 0;
+	CCPres = {};
+	CCVPres = {};
 	nfluP = 0;
 	flup = 0;
 	indFlup=0;
@@ -16172,7 +16174,8 @@ void Ler::geraevento(int inic, int extrem) {
 		}
 	}
 	if (((*vg1dSP).chaverede == 0 || inic == 1) && ConContEntrada == 1) {
-		for (int i = 0; i < CCPres.parserie; i++) {
+		// reads [i + 1]: stop one short, as the chokep event loop above does (j < chokep.parserie - 1)
+		for (int i = 0; i < CCPres.parserie - 1; i++) {
 			if ((fabs(CCPres.pres[i] - CCPres.pres[i + 1]) > 1e-15)
 					|| (fabs(CCPres.temperatura[i] - CCPres.temperatura[i + 1])
 							> 1e-15)
@@ -16195,7 +16198,8 @@ void Ler::geraevento(int inic, int extrem) {
 		}
 	}
 	if (((*vg1dSP).chaverede == 0 || inic == 1) && ConContEntrada == 2) {
-		for (int i = 0; i < CCVPres.parserie; i++) {
+		// reads [i + 1]: stop one short, as the chokep event loop above does (j < chokep.parserie - 1)
+		for (int i = 0; i < CCVPres.parserie - 1; i++) {
 			if ((fabs(CCVPres.pres[i] - CCVPres.pres[i + 1]) > 1e-15)
 					|| (fabs(CCVPres.temperatura[i] - CCVPres.temperatura[i + 1])
 							> 1e-15)
@@ -20675,8 +20679,8 @@ void Ler::copia_configuracao_inicial(Ler& arqAntigo) {
         (*vg1dSP).ntrd=nthrd;
 		(*vg1dSP).ntrd3DP=threadP3D;
 		ConContEntrada = arqAntigo.ConContEntrada;
-		CCPres.parserie =arqAntigo.CCPres.parserie;
-		CCPres.indFluido=arqAntigo.CCPres.indFluido;
+		CCPres.parserie = ConContEntrada == 1 ? arqAntigo.CCPres.parserie : 0;
+		CCPres.indFluido = ConContEntrada == 1 ? arqAntigo.CCPres.indFluido : -1;
 		if(CCPres.parserie>0){
 			CCPres.temperatura = new double[CCPres.parserie];
 			CCPres.pres = new double[CCPres.parserie];
@@ -20702,8 +20706,8 @@ void Ler::copia_configuracao_inicial(Ler& arqAntigo) {
 			CCPres.bet = 0;
 			CCPres.tempo = 0;
 		}
+		CCVPres.parserie = ConContEntrada == 2 ? arqAntigo.CCVPres.parserie : 0;
 		if(CCVPres.parserie>0){
-			CCVPres.parserie =arqAntigo.CCVPres.parserie;
 			CCVPres.temperatura = new double[CCVPres.parserie];
 			CCVPres.pres = new double[CCVPres.parserie];
 			CCVPres.mass = new double[CCVPres.parserie];

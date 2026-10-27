@@ -15783,7 +15783,6 @@ double SProd::marchaProdPerm2(double pchute) {
         double tit;
         presfim = celula[ncel].pres;
         double rholp = celula[ncel].flui.MasEspLiq(celula[ncel].pres, celula[ncel].temp);
-        double rholc = celula[ncel].fluicol.MasEspFlu(celula[ncel].pres, celula[ncel].temp);
         tit = fabs(massgas / masentrada);
 
         double masChk;
@@ -15797,12 +15796,7 @@ double SProd::marchaProdPerm2(double pchute) {
         // maxSup Ã© a vazao total passando pelo choke
 
         if (chokeSup.AreaGarg > (1e-3) * celula[ncel - 1].duto.area && ypres < 1.) {
-            double cplM = (1. - betSup) * celula[ncel].flui.CalorLiq(presfim, tESup) -
-                          betSup * celula[ncel].fluicol.CalorLiq(presfim, tESup);
-            double jtlM = (1. - betSup) * celula[ncel].flui.JTL(presfim, tESup) - betSup / rholc;
-            double cpg = celula[ncel].flui.CalorGas(presfim, tESup);
-            double jtgM = celula[ncel].flui.JTG(presfim, tESup);
-            arq.valTempChokeJus = tESup + ((1. - tit) * jtlM / cplM + tit * jtgM / cpg) * (pGSup - presfim) * 98066.52;
+            arq.valTempChokeJus = temperaturaSaida();
         }
 
     } else {
@@ -18902,7 +18896,6 @@ double SProd::marchaProdPresPres2(double mchute) {
         double tit;
         presfim = celula[ncel].pres;
         double rholp = celula[ncel].flui.MasEspLiq(celula[ncel].pres, celula[ncel].temp);
-        double rholc = celula[ncel].fluicol.MasEspFlu(celula[ncel].pres, celula[ncel].temp);
         tit = fabs(massgas / masentrada);
 
         double masChk;
@@ -18915,12 +18908,7 @@ double SProd::marchaProdPresPres2(double mchute) {
             maxSup = masChk;
 
         if (chokeSup.AreaGarg > (1e-3) * celula[ncel - 1].duto.area && ypres < 1.) {
-            double cplM = (1. - betSup) * celula[ncel].flui.CalorLiq(presfim, tESup) -
-                          betSup * celula[ncel].fluicol.CalorLiq(presfim, tESup);
-            double jtlM = (1. - betSup) * celula[ncel].flui.JTL(presfim, tESup) - betSup / rholc;
-            double cpg = celula[ncel].flui.CalorGas(presfim, tESup);
-            double jtgM = celula[ncel].flui.JTG(presfim, tESup);
-            arq.valTempChokeJus = tESup + ((1. - tit) * jtlM / cplM + tit * jtgM / cpg) * (pGSup - presfim) * 98066.52;
+            arq.valTempChokeJus = temperaturaSaida();
         }
     } else {
         maxSup = 0.;
@@ -24507,6 +24495,23 @@ void SProd::atualizaPeriTempProd(int i) {
     if (i < ncel)
         celula[i + 1].tempL = celula[i].temp;
     celula[i].tempini = celula[i].temp;
+}
+
+double SProd::temperaturaSaida() {
+    Cel &saida = celula[ncel];
+    double vazMass = celula[ncel - 1].MR;
+    if (chokeSup.AreaGarg <= 1e-3 * celula[ncel - 1].duto.area || saida.pres <= pGSup || fabs(vazMass) <= 1e-15)
+        return saida.temp;
+
+    double tit = fabs((vazMass - celula[ncel - 1].MliqiniR) / vazMass);
+    double bet = saida.bet;
+    double rholc = saida.fluicol.MasEspFlu(saida.pres, saida.temp);
+    double cplM = (1. - bet) * saida.flui.CalorLiq(saida.pres, saida.temp) -
+                  bet * saida.fluicol.CalorLiq(saida.pres, saida.temp);
+    double jtlM = (1. - bet) * saida.flui.JTL(saida.pres, saida.temp) - bet / rholc;
+    double cpg = saida.flui.CalorGas(saida.pres, saida.temp);
+    double jtgM = saida.flui.JTG(saida.pres, saida.temp);
+    return saida.temp + ((1. - tit) * jtlM / cplM + tit * jtgM / cpg) * (pGSup - saida.pres) * 98066.52;
 }
 
 void SProd::calcTempFim() {
